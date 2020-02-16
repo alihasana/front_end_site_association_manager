@@ -26,7 +26,7 @@ export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
     <List className={classes.list}>
-      <ListItem className={classes.listItem}>
+{     /*  <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           buttonText="Components"
@@ -48,7 +48,7 @@ export default function HeaderLinks(props) {
             </a>
           ]}
         />
-      </ListItem>
+      </ListItem> */}
       <ListItem className={classes.listItem}>
         <Button
           href=""
@@ -58,6 +58,18 @@ export default function HeaderLinks(props) {
         >
           <Link to={"/login-page"} className={classes.link}>
             Mon Compte
+          </Link>
+        </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+          href=""
+          color="transparent"
+          target="_blank"
+          className={classes.navLink}
+        >
+          <Link to="" className={classes.link}>
+            FAQ
           </Link>
         </Button>
       </ListItem>

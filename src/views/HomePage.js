@@ -1,8 +1,7 @@
 import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
-// react components for routing our app without refresh
-import { Link } from "react-router-dom";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -11,20 +10,28 @@ import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
+import NavSearch from "components/NavSearch/NavSearch.js";
 // sections for this page
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import ProductSection from "./Sections/ProductSection";
 import WorkSection from "./Sections/WorkSection.js";
 
-import styles from "assets/jss/material-kit-react/views/components.js";
+import logo from "assets/img/logo512.png";
+
+import styles from "assets/jss/material-kit-react/views/homePage.js";
+
 
 const useStyles = makeStyles(styles);
 
-export default function Components(props) {
+export default function HomePage(props) {
   const classes = useStyles();
   const { ...rest } = props;
+  const imageClasses = classNames(
+    classes.imgRaised,
+    classes.imgRoundedCircle,
+    classes.imgFluid
+  );
   return (
     <div>
       <Header
@@ -43,18 +50,23 @@ export default function Components(props) {
           <GridContainer>
             <GridItem>
               <div className={classes.brand}>
-                <h1 className={classes.title}>GIOGIO</h1>
+                <img src={logo} alt="association-manager-logo" className={imageClasses} />
+                <h1 className={classes.title}>Association Manager</h1>
                 <h3 className={classes.subtitle}>
                   Le site où les associations libèrent leurs organisations
                 </h3>
               </div>
             </GridItem>
+            <GridItem>
+              <NavSearch/>
+            </GridItem>
+
           </GridContainer>
         </div>
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        
+
         <ProductSection />
         <WorkSection />
       </div>

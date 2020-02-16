@@ -69,13 +69,14 @@ const defaultFont = {
   lineHeight: "1.5em"
 };
 
-const primaryColor = "#9c27b0";
-const warningColor = "#ff9800";
-const dangerColor = "#f44336";
-const successColor = "#4caf50";
-const infoColor = "#00acc1";
+const primaryColor = "#C7B8DB"; // #FACFF3
+const warningColor = "#ff9800"; // #C7B8DB
+const dangerColor = "#f44336"; // #0038F0
+const successColor = '#FACFF3'; // #BDDADE
+const infoColor = "#BDDADE"; //#0DBD5C
 const roseColor = "#e91e63";
 const grayColor = "#999999";
+
 
 const primaryBoxShadow = {
   boxShadow:

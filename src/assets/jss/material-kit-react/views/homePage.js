@@ -1,6 +1,7 @@
 import { container } from "assets/jss/material-kit-react.js";
+import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
 
-const componentsStyle = {
+const homePageStyle = {
   container,
   brand: {
     color: "#FFFFFF",
@@ -33,7 +34,8 @@ const componentsStyle = {
   },
   textCenter: {
     textAlign: "center"
-  }
+  },
+  ...imagesStyle,
 };
 
-export default componentsStyle;
+export default homePageStyle;

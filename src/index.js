@@ -9,13 +9,15 @@ import "assets/scss/material-kit-react.scss?v=1.8.0";
 import HomePage from "views/HomePage.js";
 import LoginPage from "views/LoginPage.js";
 import LandingPage from "views/LandingPage.js";
+import ProfilePage from "views/ProfilePage";
 
 var hist = createBrowserHistory();
 
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-     <Route path="/landing-page" component={LandingPage} />
+      <Route path="/profile-page" component={ProfilePage} /> 
+      <Route path="/landing-page" component={LandingPage} />
       <Route path="/login-page" component={LoginPage} />
       <Route path="/" component={HomePage} />
     </Switch>
