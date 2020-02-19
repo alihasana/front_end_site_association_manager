@@ -72,10 +72,10 @@ const defaultFont = {
 const primaryColor = "#C7B8DB"; // #FACFF3
 const warningColor = "#ff9800"; // #C7B8DB
 const dangerColor = "#f44336"; // #0038F0
-const successColor = '#FACFF3'; // #BDDADE
+const successColor = '#0DBD5C'; // #BDDADE
 const infoColor = "#BDDADE"; //#0DBD5C
-const roseColor = "#e91e63";
-const grayColor = "#999999";
+const roseColor = "#FACFF3";
+const grayColor = "#C7B8DB";
 
 
 const primaryBoxShadow = {

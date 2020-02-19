@@ -1,3 +1,5 @@
+import button from "../material-kit-react/components/buttonStyle";
+
 const modalStyle = {
   modal: {
     borderRadius: "6px"
@@ -13,6 +15,13 @@ const modalStyle = {
   modalTitle: {
     margin: "0",
     lineHeight: "1.42857143"
+  },
+  modalButton: {
+    ...button,
+    display: "block",
+    "& span":{
+      display: "block"
+    }
   },
   modalCloseButton: {
     color: "#999999",

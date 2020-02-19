@@ -318,7 +318,7 @@ const buttonStyle = {
         height: "17px"
       }
     }
-  }
+}
 };
 
 export default buttonStyle;
