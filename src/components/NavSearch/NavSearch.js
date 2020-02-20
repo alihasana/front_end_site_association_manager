@@ -34,11 +34,11 @@ function NavSearch(props) {
     let searchOffHandler = () => {
         const searchInterval = setInterval(() => {
             if (state.searchWidth < 0) {
-                this.setState({isOpen: false});
+                React.setState({isOpen: false});
                 clearInterval(searchInterval);
                 return false;
             }
-            this.setState(prevSate => {
+            React.setState(prevSate => {
                 return {
                     searchWidth: prevSate.searchWidth - 15,
                     searchString: prevSate.searchWidth + 'px'
@@ -56,12 +56,11 @@ function NavSearch(props) {
                 fullWidth: true
                 }}
                 white
-                htmlColor="white"
                 onClick={searchOffHandler}
                 inputProps={{
                 endAdornment: (
                     <Link to={"/profile-page"} >
-                        <InputAdornment position="end" htmlColor="white"> 
+                        <InputAdornment position="end"> 
                             <Search />
                         </InputAdornment>
                     </Link>

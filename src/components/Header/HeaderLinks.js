@@ -54,9 +54,9 @@ export default function HeaderLinks(props) {
           href=""
           color="transparent"
           target="_blank"
-          className={classes.navLink}
+          className={classes.title}
         >
-          <Link to={"/login-page"} className={classes.link}>
+          <Link to={"/login-page"}>
             Mon Compte
           </Link>
         </Button>
@@ -66,9 +66,9 @@ export default function HeaderLinks(props) {
           href=""
           color="transparent"
           target="_blank"
-          className={classes.navLink}
+          className={classes.title}
         >
-          <Link to="" className={classes.link}>
+          <Link to={""} >
             FAQ
           </Link>
         </Button>

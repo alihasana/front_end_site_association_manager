@@ -50,6 +50,9 @@ const customInputStyle = {
       marginTop: "0px"
     }
   },
+  labelRootWhite: {
+    color: "#FFFFFF !important"
+  },
   labelRootError: {
     color: dangerColor + " !important"
   },
@@ -62,6 +65,11 @@ const customInputStyle = {
     position: "relative",
     "& svg,& .fab,& .far,& .fal,& .fas,& .material-icons": {
       color: "#495057"
+    }
+  },
+  formControlWhite: {
+    "& svg,& .fab,& .far,& .fal,& .fas,& .material-icons": {
+      color: "#FFFFFF"
     }
   },
   input: {

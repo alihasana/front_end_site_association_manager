@@ -29,7 +29,8 @@ export default function CustomInput(props) {
 
   const labelClasses = classNames({
     [" " + classes.labelRootError]: error,
-    [" " + classes.labelRootSuccess]: success && !error
+    [" " + classes.labelRootSuccess]: success && !error,
+    [" " + classes.labelRootWhite]: white
   });
   const underlineClasses = classNames({
     [classes.underlineError]: error,
@@ -47,11 +48,16 @@ export default function CustomInput(props) {
   var formControlClasses;
   if (formControlProps !== undefined) {
     formControlClasses = classNames(
-      formControlProps.className,
-      classes.formControl
+      formControlProps.className,{
+      [classes.formControl]: true,
+      [classes.formControlWhite]: white
+    }
     );
   } else {
-    formControlClasses = classes.formControl;
+    formControlClasses = classNames({
+      [classes.formControl]: true,
+      [classes.formControlWhite]: white
+    });
   }
   return (
     <FormControl {...formControlProps} className={formControlClasses}>
