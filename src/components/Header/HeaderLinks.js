@@ -20,6 +20,7 @@ import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 
+
 const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
@@ -49,6 +50,19 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem> */}
+      <ListItem className={classes.listItem}>
+        <Button
+          href=""
+          className={classes.registerNavLink}
+          onClick={e => e.preventDefault()}
+          color={classes.colorHeader.grayColor}
+          round
+        >
+          <Link to={"/landing-page"} >
+          Inscrire mon association
+          </Link>
+        </Button>
+      </ListItem>
       <ListItem className={classes.listItem}>
         <Button
           href=""

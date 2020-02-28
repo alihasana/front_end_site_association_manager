@@ -196,7 +196,7 @@ const buttonStyle = {
     },
     "&$primary": {
       "&,&:focus,&:hover,&:visited": {
-        color: primaryColor
+        color: grayColor + " !important"
       }
     },
     "&$info": {

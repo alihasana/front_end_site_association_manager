@@ -1,8 +1,26 @@
-import { defaultFont } from "assets/jss/material-kit-react.js";
+import { 
+  defaultFont,
+  grayColor,
+  roseColor,
+  primaryColor,
+  infoColor,
+  successColor,
+  warningColor,
+  dangerColor
+} from "assets/jss/material-kit-react.js";
 
 import tooltip from "assets/jss/material-kit-react/tooltipsStyle.js";
 
 const headerLinksStyle = theme => ({
+  colorHeader: {
+    grayColor: grayColor,
+    roseColor: roseColor,
+    primaryColor: primaryColor,
+    infoColor: infoColor,
+    successColor: successColor,
+    warningColor: warningColor,
+    dangerColor: dangerColor
+  },
   list: {
     ...defaultFont,
     fontSize: "14px",
@@ -11,7 +29,7 @@ const headerLinksStyle = theme => ({
     listStyle: "none",
     paddingTop: "0",
     paddingBottom: "0",
-    color: "inherit"
+    color: "w"
   },
   listItem: {
     float: "left",
@@ -36,6 +54,7 @@ const headerLinksStyle = theme => ({
   listItemText: {
     padding: "0 !important"
   },
+  
   navLink: {
     color: "inherit",
     position: "relative",
@@ -50,6 +69,7 @@ const headerLinksStyle = theme => ({
     display: "inline-flex",
     "&:hover,&:focus": {
       color: "inherit",
+
       background: "rgba(200, 200, 200, 0.2)"
     },
     [theme.breakpoints.down("sm")]: {
@@ -87,7 +107,7 @@ const headerLinksStyle = theme => ({
     display: "inline-flex"
   },
   navLinkActive: {
-    color: "inherit",
+    color: "white",
     backgroundColor: "rgba(255, 255, 255, 0.1)"
   },
   icons: {

@@ -15,12 +15,12 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
-import CustomInput from "components/CustomInput/CustomInput";
-import InputAdornment from "@material-ui/core/InputAdornment";
+
 
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 
 // Sections for this page
+import RegistrationSection from "./Sections/RegistrationSection.js";
 
 
 const useStyles = makeStyles(styles);
@@ -29,11 +29,6 @@ export default function LandingPage(props) {
   function handleClick(e) {
     e.preventDefault();
     window.open("https://www.associations.gouv.fr/kitgratuit.html");
-  }
-
-  function dynamicform(e) {
-    e.preventDefault();
-
   }
 
   const classes = useStyles();
@@ -90,37 +85,7 @@ www.journal-officiel.gouv.fr, rubrique " Nous contacter ".
         </div>
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
-          <CustomInput
-              labelText="Type d'association"
-              id="AssosType"
-              formControlProps={{
-                fullWidth: true
-              }}
-              inputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <ParallaxButton className={"fab fa-list-alt"}
-                      text="Next"
-                      parallaxScale={0.7}
-                      backgroundStyle={{  
-                        background: 'linear-gradient(right, #0038F0, #0DBD5C)',  
-                        borderRadius: '8px',  
-                        boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
-                      }}  
-                      textStyle={{  
-                        padding: '1.5em 2.5em 1.5em 2.5em',  
-                        color: 'white'  
-                      }}
-                      onClick={dynamicform} 
-                    />
-                  </InputAdornment>
-                )
-              }}
-          />
-
-        
-        </div>
+       <RegistrationSection/>
       </div>
       <Footer />
     </div>

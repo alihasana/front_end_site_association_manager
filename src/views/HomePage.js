@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 
@@ -13,6 +15,7 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Parallax from "components/Parallax/Parallax.js";
 import NavSearch from "components/NavSearch/NavSearch.js";
+import Button from "components/CustomButtons/Button.js";
 // sections for this page
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import ProductSection from "./Sections/ProductSection";
@@ -66,9 +69,15 @@ export default function HomePage(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-
         <ProductSection />
         <WorkSection />
+        <GridContainer justify="center">
+          <Link to="/Landing-page" justify="center" >
+            <Button color="primary" simple size="lg"> 
+            Inscrire mon association
+            </Button>
+          </Link>
+        </GridContainer>
       </div>
       <Footer />
     </div>
