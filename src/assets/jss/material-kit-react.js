@@ -73,7 +73,7 @@ const primaryColor = "#C7B8DB"; // #FACFF3
 const warningColor = "#ff9800"; // #C7B8DB
 const dangerColor = "#f44336"; // #0038F0
 const successColor = '#0DBD5C'; // #BDDADE
-const infoColor = "#BDDADE"; //#0DBD5C
+const infoColor = "#BDDADE"; // #0DBD5C
 const roseColor = "#FACFF3";
 const grayColor = "#C7B8DB";
 
@@ -120,17 +120,17 @@ const dangerCardHeader = {
 };
 const infoCardHeader = {
   color: "#fff",
-  background: "linear-gradient(60deg, #26c6da, #00acc1)",
+  background: "linear-gradient(60deg, #26c6da, #BDDADE)",
   ...infoBoxShadow
 };
 const primaryCardHeader = {
   color: "#fff",
-  background: "linear-gradient(60deg, #ab47bc, #8e24aa)",
+  background: "linear-gradient(60deg, #ab47bc, #C7B8DB)",
   ...primaryBoxShadow
 };
 const roseCardHeader = {
   color: "#fff",
-  background: "linear-gradient(60deg, #ec407a, #d81b60)",
+  background: "linear-gradient(60deg, #ec407a, #FACFF3)",
   ...roseBoxShadow
 };
 const cardActions = {

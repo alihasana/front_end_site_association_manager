@@ -45,6 +45,7 @@ import work5 from "assets/img/examples/clem-onojegaw.jpg"; */
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 import ParallaxWrapper from "react-parallax-button/ParallaxWrapper";
 import ParallaxButton from "react-parallax-button/ParallaxButton";
+import WorkSection from "./Sections/WorkSection";
 
 const useStyles = makeStyles(styles);
 
@@ -330,9 +331,11 @@ export default function ProfilePage(props) {
                   ]}
                 />*/}
               </GridItem>
-            </GridContainer>
-              
+            </GridContainer>              
           </div>
+        </div>
+        <div>
+          <WorkSection />
         </div>
       </div>
       <Footer />

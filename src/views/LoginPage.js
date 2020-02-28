@@ -21,7 +21,8 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
-import image from "assets/img/bg7.jpg";
+import image from "assets/img/PeleMeleAsso.png";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(styles);
 
@@ -86,7 +87,7 @@ export default function LoginPage(props) {
                       </Button>
                     </div>
                   </CardHeader>
-                  <p className={classes.divider}>Or Be Classical</p>
+                  <p className={classes.divider}>Welcome in</p>
                   <CardBody>
                     <CustomInput
                       labelText="First Name..."
@@ -141,6 +142,11 @@ export default function LoginPage(props) {
                     <Button simple color="primary" size="lg">
                       Get started
                     </Button>
+                    <Link to="/Landing-page">
+                      <Button color="primary" simple size="lg"> 
+                      Inscrire mon association
+                      </Button>
+                    </Link>
                   </CardFooter>
                 </form>
               </Card>

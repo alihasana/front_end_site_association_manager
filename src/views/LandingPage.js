@@ -20,7 +20,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 
-
 // Sections for this page
 
 
@@ -31,8 +30,15 @@ export default function LandingPage(props) {
     e.preventDefault();
     window.open("https://www.associations.gouv.fr/kitgratuit.html");
   }
+
+  function dynamicform(e) {
+    e.preventDefault();
+
+  }
+
   const classes = useStyles();
   const { ...rest } = props;
+
   return (
     <div>
       <Header
@@ -60,23 +66,25 @@ conditions de nature à garantir son authenticité par une signature électroniq
 Pour tout renseignement concernant la publication de votre annonce, vous pouvez vous rendre sur le site :
 www.journal-officiel.gouv.fr, rubrique " Nous contacter ".
 </span></h4>
-              <br />
-
-              <ParallaxButton  
-                className={LibraryBooks}
-                text="Kit gratuit"
-                parallaxScale={0.7}
-                backgroundStyle={{  
-                  background: 'linear-gradient(right, {primaryColor}, {infoColor})',  
-                  borderRadius: '8px',  
-                  boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
-                }}  
-                textStyle={{  
-                  padding: '1.5em 2.5em 1.5em 2.5em',  
-                  color: 'white'  
-                }}
-                onClick={handleClick} 
-            />
+            <br />
+           
+            <ParallaxButton 
+              text="Kit gratuit"
+              parallaxScale={0.7}
+              backgroundStyle={{  
+                background: `linear-gradient(right,  #0038F0, #0DBD5C)`,  
+                borderRadius: '8px',  
+                boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
+              }}  
+              textStyle={{  
+                padding: '1.5em 2.5em 1.5em 2.5em',  
+                color: 'white',
+              }}
+              onClick={handleClick} 
+              >
+                <LibraryBooks className={classes.button.jusIcon}/> 
+              </ParallaxButton>
+            
             </GridItem>
           </GridContainer>
         </div>
@@ -104,7 +112,7 @@ www.journal-officiel.gouv.fr, rubrique " Nous contacter ".
                         padding: '1.5em 2.5em 1.5em 2.5em',  
                         color: 'white'  
                       }}
-                      onClick={handleClick} 
+                      onClick={dynamicform} 
                     />
                   </InputAdornment>
                 )

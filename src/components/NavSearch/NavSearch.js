@@ -1,6 +1,5 @@
 import React from 'react';
 // nodejs library that concatenates classes
-import { Link } from "react-router-dom";
 import windowSize from 'react-window-size';
 
 // @material-ui/core components
@@ -11,6 +10,7 @@ import Search from "@material-ui/icons/Search";
 
 // code component
 import CustomInput from "components/CustomInput/CustomInput.js";
+import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/customInputStyle.js";
 
@@ -52,20 +52,22 @@ function NavSearch(props) {
                 labelText="Rechercher une association . . ."
                 id="m-search"
                 input
+                inputRootCustomClasses={classes.inputRootCustomClasses}
                 formControlProps={{
-                fullWidth: true
+                    className: classes.formControl,
+                    fullWidth: true
                 }}
                 white
                 onClick={searchOffHandler}
                 inputProps={{
-                endAdornment: (
-                    <Link to={"/profile-page"} >
-                        <InputAdornment position="end"> 
-                            <Search />
-                        </InputAdornment>
-                    </Link>
-                )
-                }}
+                    endAdornment: (                  
+                            <InputAdornment style={{marginBottom:"15px"}} position="end"> 
+                                <Button justIcon round color="white">
+                                    <Search className={classes.searchIcon} textColor="primary" />
+                                </Button>
+                            </InputAdornment>
+                    )
+                    }}
                 />
             </div>
             );
