@@ -6,7 +6,7 @@ import {
   infoColor,
   successColor,
   warningColor,
-  dangerColor
+  dangerColor,
 } from "assets/jss/material-kit-react.js";
 
 import tooltip from "assets/jss/material-kit-react/tooltipsStyle.js";
@@ -29,7 +29,7 @@ const headerLinksStyle = theme => ({
     listStyle: "none",
     paddingTop: "0",
     paddingBottom: "0",
-    color: "w"
+    color: "inherit"
   },
   listItem: {
     float: "left",
@@ -44,7 +44,7 @@ const headerLinksStyle = theme => ({
       "&:after": {
         width: "calc(100% - 30px)",
         content: '""',
-        display: "block",
+        display: "none",
         height: "1px",
         marginLeft: "15px",
         backgroundColor: "#e5e5e5"

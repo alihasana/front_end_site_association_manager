@@ -1,7 +1,8 @@
 /*eslint-disable*/
 import React from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@material-ui/core/IconButton"
+import useOverrides from "overrides/use";
 // react components for routing our app without refresh
 import { Link } from "react-router-dom";
 
@@ -25,6 +26,10 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
   const classes = useStyles();
+/*   const ListItemOverrides = ({overrides, ...props}) => {
+    const {ListItemOver} = useOverrides(ListItem, overrides);
+    return <ListItemOver/>
+  } */
   return (
     <List className={classes.list}>
 {     /*  <ListItem className={classes.listItem}>
@@ -50,12 +55,11 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem> */}
-      <ListItem className={classes.listItem}>
+      <ListItem  className={classes.listItem} >
         <Button
           href=""
           className={classes.registerNavLink}
           onClick={e => e.preventDefault()}
-          color={classes.colorHeader.grayColor}
           round
         >
           <Link to={"/landing-page"} >

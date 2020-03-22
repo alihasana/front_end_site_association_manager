@@ -4,7 +4,8 @@ import {
   infoColor,
   successColor,
   warningColor,
-  dangerColor
+  dangerColor, 
+  container
 } from "assets/jss/material-kit-react.js";
 
 const navPillsStyle = theme => ({
@@ -135,6 +136,16 @@ const navPillsStyle = theme => ({
     "&,& *": {
       letterSpacing: "normal"
     }
+  },
+  section: {
+    padding: "70px 0"
+  },
+  container,
+  textCenter: {
+    textAlign: "center"
+  },
+  sharingArea: {
+    marginTop: "80px"
   }
 });
 

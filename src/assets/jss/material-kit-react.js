@@ -170,7 +170,7 @@ const cardTitle = {
 };
 
 const cardLink = {
-  "& + $cardLink": {
+  "& + $cardx": {
     marginLeft: "1.25rem"
   }
 };
@@ -179,7 +179,9 @@ const cardSubtitle = {
   marginBottom: "0",
   marginTop: "-.375rem"
 };
+const a = {
 
+}
 export {
   //variables
   drawerWidth,
@@ -214,5 +216,6 @@ export {
   title,
   cardTitle,
   cardLink,
-  cardSubtitle
+  cardSubtitle,
+  a
 };

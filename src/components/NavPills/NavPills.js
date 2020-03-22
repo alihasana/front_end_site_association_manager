@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // nodejs library to set properties for components
@@ -13,19 +13,31 @@ import Tab from "@material-ui/core/Tab";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
+import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/navPillsStyle.js";
 
 const useStyles = makeStyles(styles);
 
 export default function NavPills(props) {
-  const [active, setActive] = React.useState(props.active);
+  const [active, setActive] = useState(props.active);
   const handleChange = (event, active) => {
     setActive(active);
   };
-  const handleChangeIndex = index => {
+  const handleChangeIndex = index => {    
     setActive(index);
   };
+
+  const HandleNextTab = (event) =>{
+    var newActive = active+1
+    if (active<tabs.length-1) setActive(newActive);
+  };
+
+  const handlePrevTab = (event) =>{
+    var newActive = active-1
+    if (active > 0) setActive(newActive);
+  };
+
   const classes = useStyles();
   const { tabs, direction, color, horizontal, alignCenter } = props;
   const flexContainerClasses = classNames({
@@ -33,6 +45,7 @@ export default function NavPills(props) {
     [classes.horizontalDisplay]: horizontal !== undefined
   });
   const tabButtons = (
+
     <Tabs
       classes={{
         root: classes.root,
@@ -55,6 +68,7 @@ export default function NavPills(props) {
           [classes.pillsWithIcons]: prop.tabIcon !== undefined
         });
         return (
+
           <Tab
             label={prop.tabButton}
             key={key}
@@ -67,6 +81,7 @@ export default function NavPills(props) {
           />
         );
       })}
+      
     </Tabs>
   );
   const tabContent = (
@@ -83,7 +98,20 @@ export default function NavPills(props) {
             </div>
           );
         })}
+        
       </SwipeableViews>
+      <div>
+        <GridContainer >
+          <GridItem className="space-between">
+            <Button color="primary" size="lg" onClick={handlePrevTab}>
+              Précédent    
+            </Button>              
+            <Button color="primary" size="lg" onClick={HandleNextTab}> 
+              Suivant
+            </Button>
+          </GridItem>
+        </GridContainer>
+      </div>
     </div>
   );
   return horizontal !== undefined ? (

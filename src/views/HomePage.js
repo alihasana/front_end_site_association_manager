@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+//import { withOverrides, useOverrides } from "overrides";
+// or...
+//import withOverrides from "overrides/with";
+//import useOverrides from "overrides/use";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -24,6 +28,7 @@ import WorkSection from "./Sections/WorkSection.js";
 import logo from "assets/img/logo512.png";
 
 import styles from "assets/jss/material-kit-react/views/homePage.js";
+import {red} from "@material-ui/core/colors";
 
 
 const useStyles = makeStyles(styles);
@@ -31,6 +36,8 @@ const useStyles = makeStyles(styles);
 export default function HomePage(props) {
   const classes = useStyles();
   const { ...rest } = props;
+  console.log({...rest});
+  
   const imageClasses = classNames(
     classes.imgRaised,
     classes.imgRoundedCircle,
@@ -40,7 +47,15 @@ export default function HomePage(props) {
     <div>
       <Header
         brand="Association Manager"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinks 
+                        overrides={{
+                          LinkAnchor:{
+                            a:{
+                              color: red + "!important"
+                            }
+                          }
+                        }} 
+                    />}
         fixed
         color="transparent"
         changeColorOnScroll={{

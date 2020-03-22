@@ -64,7 +64,7 @@ export default function ProductSection() {
               title="Gestion des transactions"
               description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
               icon={CompareArrows}
-              iconColor="Default"
+              iconColor="gray"
               vertical
             />
           </GridItem>
