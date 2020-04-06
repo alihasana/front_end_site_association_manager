@@ -50,7 +50,8 @@ const navPillsStyle = theme => ({
     height: "auto",
     opacity: "1",
     maxWidth: "100%",
-    margin: "0 5px"
+    margin: "0 5px",
+    backgroundColor: 'linear-gradient(right, #0038F0, #0DBD5C) !important'
   },
   pillsWithIcons: {
     borderRadius: "4px"
@@ -146,6 +147,22 @@ const navPillsStyle = theme => ({
   },
   sharingArea: {
     marginTop: "80px"
+  },
+
+  buttonPrevious:{
+    width: "50% !important",
+    position: "lefl"
+  },
+
+  buttonNext: {
+    width: "50% !important",
+    position: "right",
+    marginRight: "0",
+    textAlign: "right"
+  },
+  button: {
+    margin: "20px 0px 20px 0px",
+    padding: "0px"
   }
 });
 

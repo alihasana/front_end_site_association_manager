@@ -18,10 +18,10 @@ const registerStyle = {
     textDecoration: "none"
   },
   typo: {
-    paddingLeft: "25%",
     marginBottom: "40px",
     position: "relative",
-    width: "100%"
+    width: "100%",
+    textAlign: "center"
   },
   note: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -36,8 +36,15 @@ const registerStyle = {
     position: "absolute",
     width: "260px"
   },
-  marginLeft: {
-    marginLeft: "auto !important"
+  margin: {
+    textAlign: "center !important"
+  },
+  inputAdornment: {
+    marginBottom: "25px"
+  },
+  button: {
+    margin: "0px",
+    padding: "0px"
   },
   ...imagesStyles
 };

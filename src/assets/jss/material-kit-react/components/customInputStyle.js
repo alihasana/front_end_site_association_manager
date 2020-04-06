@@ -91,7 +91,11 @@ const customInputStyle = {
       color: "#FFFFFF",
       opacity: "1"
     }
+  },
+  inputAdornment: {
+    marginBottom: "17px"
   }
+  
 };
 
 export default customInputStyle;

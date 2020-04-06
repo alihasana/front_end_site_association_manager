@@ -38,7 +38,7 @@ const headerLinksStyle = theme => ({
     display: "block",
     width: "auto",
     margin: "0",
-    padding: "0",
+    padding: "0 0 0 1",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
       "&:after": {
@@ -95,17 +95,6 @@ const headerLinksStyle = theme => ({
     display: "inline-flex",
     top: "4px"
   },
-  registerNavLink: {
-    top: "3px",
-    position: "relative",
-    fontWeight: "400",
-    fontSize: "12px",
-    textTransform: "uppercase",
-    lineHeight: "20px",
-    textDecoration: "none",
-    margin: "0px",
-    display: "inline-flex"
-  },
   navLinkActive: {
     color: "white",
     backgroundColor: "rgba(255, 255, 255, 0.1)"
@@ -131,6 +120,9 @@ const headerLinksStyle = theme => ({
   ...tooltip,
   marginRight5: {
     marginRight: "5px"
+  },
+  link: {
+      color:"white !important"
   }
 });
 

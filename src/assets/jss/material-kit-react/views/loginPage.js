@@ -73,10 +73,14 @@ const signupPageStyle = {
     textAlign: "center"
   },
   cardFooter: {
-    paddingTop: "0rem",
+    display: "block",
+    padding: "0rem",
+    paddingBottom: "20px",
     border: "0",
     borderRadius: "6px",
-    justifyContent: "center !important"
+    textAlign: "center",
+    justifyContent: "center !important",
+    fontWeight: "bold !important"
   },
   socialLine: {
     marginTop: "1rem",
@@ -85,7 +89,11 @@ const signupPageStyle = {
   },
   inputIconsColor: {
     color: "#495057"
+  },
+  button : {
+    paddingBottom : "0px"
   }
+
 };
 
 export default signupPageStyle;

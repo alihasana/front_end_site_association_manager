@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
+import {ParallaxButton} from 'react-parallax-button';
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
@@ -13,7 +14,7 @@ import Tab from "@material-ui/core/Tab";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/CustomButtons/Button";
 
 import styles from "assets/jss/material-kit-react/components/navPillsStyle.js";
 
@@ -100,18 +101,44 @@ export default function NavPills(props) {
         })}
         
       </SwipeableViews>
-      <div>
-        <GridContainer >
-          <GridItem className="space-between">
-            <Button color="primary" size="lg" onClick={handlePrevTab}>
-              Précédent    
-            </Button>              
-            <Button color="primary" size="lg" onClick={HandleNextTab}> 
-              Suivant
-            </Button>
-          </GridItem>
-        </GridContainer>
-      </div>
+      <GridContainer className={horizontal} >
+        <GridItem xs={12} className={classes.buttonPrevious}>
+          <Button className={classes.button} simple size="sm">
+          <ParallaxButton 
+            text="Précédent"
+            parallaxScale={0.7}
+            backgroundStyle={{  
+              background: 'linear-gradient(right, #0038F0, #0DBD5C)',  
+              borderRadius: '8px',  
+              boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
+            }}  
+            textStyle={{  
+              padding: '1.5em 2.5em 1.5em 2.5em',  
+              color: 'white'  
+            }}
+            onClick={handlePrevTab}
+          />
+          </Button>
+        </GridItem>
+        <GridItem xs={12} className={classes.buttonNext}  >
+          <Button className={classes.button} simple size="sm">
+          <ParallaxButton
+            text="Suivant"
+            parallaxScale={0.7}
+            backgroundStyle={{  
+              background: 'linear-gradient(right, #0038F0, #0DBD5C)',  
+              borderRadius: '8px',  
+              boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
+            }}  
+            textStyle={{  
+              padding: '1.5em 2.5em 1.5em 2.5em',  
+              color: 'white'  
+            }}
+            onClick={HandleNextTab}
+          />
+          </Button>
+        </GridItem>
+      </GridContainer>
     </div>
   );
   return horizontal !== undefined ? (
@@ -129,7 +156,7 @@ export default function NavPills(props) {
 
 NavPills.defaultProps = {
   active: 0,
-  color: "primary"
+  color: "info"
 };
 
 NavPills.propTypes = {

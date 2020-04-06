@@ -35,7 +35,7 @@ export default function NavSearch() {
                 white
                 inputProps={{
                     endAdornment: (                  
-                            <InputAdornment style={{marginBottom:"15px"}} position="end"> 
+                            <InputAdornment className={classes.inputAdornment} position="end"> 
                                 <Button justIcon round color="white">
                                     <Search className={classes.searchIcon} color="primary" />
                                 </Button>

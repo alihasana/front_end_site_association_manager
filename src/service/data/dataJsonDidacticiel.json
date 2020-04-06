@@ -1,0 +1,25 @@
+{
+    "data": [{
+            "id": 1,
+            "question": "Quel type d'association voulez-vous créer ?",
+            "choix": ["Association sportive", "Association caritative", "Autre"]
+        },
+        {
+            "id": 2,
+            "question": "Quel est le nom de votre association ?",
+            "choix": [],
+            "info": "Le nom de votre association doit être renseigné tel qu’il figure dans les statuts, en 250 caractères maximum (caractères de l’alphabet latin uniquement, espaces, signes compris). Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée."
+        },
+        {
+            "id": 3,
+            "question": "Avez-vous besoin d'un local ?",
+            "choix": ["Non", "Oui"],
+            "info":"Dans l’hypothèse où le siège social de votre association est fixé chez un particulier, il est conseillé de signaler matériellement l’existence de celui-ci sur le lieu de distribution du courrier et d’en informer les services postaux afin d’éviter les cas de retour à l’envoyeur pour adresse inconnue. Lorsque l’association n’est pas propriétaire des locaux, il est prudent de fixer l’adresse du siège social en accord avec le propriétaire des lieux."
+        },
+        {
+            "id": 4,
+            "question": "Ensvisagez-vous des adhérents ?",
+            "choix": ["Non", "Oui"]
+        }
+    ]
+}

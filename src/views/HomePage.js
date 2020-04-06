@@ -88,7 +88,7 @@ export default function HomePage(props) {
         <WorkSection />
         <GridContainer justify="center">
           <Link to="/Landing-page" justify="center" >
-            <Button color="primary" simple size="lg"> 
+            <Button color="linkColor" simple size="lg"> 
             Inscrire mon association
             </Button>
           </Link>

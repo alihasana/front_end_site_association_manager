@@ -33,6 +33,11 @@ export default function LoginPage(props) {
   }, 700);
   const classes = useStyles();
   const { ...rest } = props;
+
+  const handleSubmit = (event) => {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
   return (
     <div>
       <Header
@@ -54,7 +59,7 @@ export default function LoginPage(props) {
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[cardAnimaton]}>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={handleSubmit} >
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>Login</h4>
                     <div className={classes.socialLine}>
@@ -138,12 +143,12 @@ export default function LoginPage(props) {
                       }}
                     />
                   </CardBody>
-                  <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
+                  <CardFooter className={classes.cardFooter} >
+                    <Button className={classes.button} simple color="linkColor" size="lg" type="submit">
                       Get started
                     </Button>
                     <Link to="/Landing-page">
-                      <Button color="primary" simple size="lg"> 
+                      <Button className={classes.button} color="linkColor" simple size="lg"> 
                       Inscrire mon association
                       </Button>
                     </Link>

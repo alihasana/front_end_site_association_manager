@@ -2,7 +2,6 @@
 import React from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton"
-import useOverrides from "overrides/use";
 // react components for routing our app without refresh
 import { Link } from "react-router-dom";
 
@@ -16,7 +15,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import { Apps, CloudDownload } from "@material-ui/icons";
 
 // core components
-import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
+//import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
@@ -26,10 +25,6 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
   const classes = useStyles();
-/*   const ListItemOverrides = ({overrides, ...props}) => {
-    const {ListItemOver} = useOverrides(ListItem, overrides);
-    return <ListItemOver/>
-  } */
   return (
     <List className={classes.list}>
 {     /*  <ListItem className={classes.listItem}>
@@ -58,7 +53,6 @@ export default function HeaderLinks(props) {
       <ListItem  className={classes.listItem} >
         <Button
           href=""
-          className={classes.registerNavLink}
           onClick={e => e.preventDefault()}
           round
         >
@@ -70,11 +64,10 @@ export default function HeaderLinks(props) {
       <ListItem className={classes.listItem}>
         <Button
           href=""
-          color="transparent"
           target="_blank"
-          className={classes.title}
+          round
         >
-          <Link to={"/login-page"}>
+          <Link className={classes.link} to={"/login-page"}>
             Mon Compte
           </Link>
         </Button>
@@ -82,11 +75,10 @@ export default function HeaderLinks(props) {
       <ListItem className={classes.listItem}>
         <Button
           href=""
-          color="transparent"
           target="_blank"
-          className={classes.title}
+          round
         >
-          <Link to={""} >
+          <Link className={classes.link} to={""} >
             FAQ
           </Link>
         </Button>

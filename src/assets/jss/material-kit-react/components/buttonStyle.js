@@ -140,6 +140,16 @@ const buttonStyle = {
       color: grayColor
     }
   },
+  linkColor: {
+    backgroundColor: "#9c27b0",
+    boxShadow:
+      "0 2px 2px 0 rgba(233, 30, 99, 0.14), 0 3px 1px -2px rgba(233, 30, 99, 0.2), 0 1px 5px 0 rgba(233, 30, 99, 0.12)",
+    "&:hover,&:focus": {
+      backgroundColor: roseColor,
+      boxShadow:
+        "0 14px 26px -12px rgba(233, 30, 99, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(233, 30, 99, 0.2)"
+    }
+  },
   twitter: {
     backgroundColor: "#55acee",
     color: "#fff",
@@ -222,6 +232,11 @@ const buttonStyle = {
     "&$danger": {
       "&,&:focus,&:hover,&:visited": {
         color: dangerColor
+      }
+    },
+    "&$linkColor": {
+      "&,&:focus,&:hover,&:visited": {
+        color: "#9c27b0"
       }
     },
     "&$twitter": {
