@@ -172,9 +172,10 @@ export default function ProfilePage(props) {
                     id="classic-modal-slide-description"
                     className={classes.modalBody}
                   >
-                    <GridItem xs={12} sm={4} md={4} lg={3}>
+                    <GridItem>
                       <CustomInput
                         labelText="Valeur du don ponctuel"
+                        pattern="[0-9]*"
                         id="font-awesome"
                         formControlProps={{
                           fullWidth: true
@@ -187,10 +188,12 @@ export default function ProfilePage(props) {
                           )
                         }}
                       />
-                               <CustomInput
+                      <CustomInput
+                        pattern="[0-9]*"
                         labelText="Valeur du don mensuel"
                         id="font-awesome"
                         formControlProps={{
+                          error:true,
                           fullWidth: true
                         }}
                         inputProps={{

@@ -15,6 +15,7 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
+import Button from "components/CustomButtons/Button.js";
 
 
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
@@ -62,24 +63,24 @@ Pour tout renseignement concernant la publication de votre annonce, vous pouvez 
 www.journal-officiel.gouv.fr, rubrique " Nous contacter ".
 </span></h4>
             <br />
-           
-            <ParallaxButton 
-              text="Kit gratuit"
-              parallaxScale={0.7}
-              backgroundStyle={{  
-                background: `linear-gradient(right,  #0038F0, #0DBD5C)`,  
-                borderRadius: '8px',  
-                boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
-              }}  
-              textStyle={{  
-                padding: '1.5em 2.5em 1.5em 2.5em',  
-                color: 'white',
-              }}
-              onClick={handleClick} 
-              >
-                <LibraryBooks className={classes.button.jusIcon}/> 
+            <Button className={classes.button} simple>
+              <ParallaxButton 
+                text="Kit gratuit"
+                parallaxScale={0.7}
+                backgroundStyle={{  
+                  background: `linear-gradient(right,  #0038F0, #0DBD5C)`,  
+                  borderRadius: '8px',  
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
+                }}  
+                textStyle={{  
+                  padding: '1.5em 2.5em 1.5em 2.5em',  
+                  color: 'white',
+                }}
+                onClick={handleClick} 
+                >
+                <LibraryBooks className={classes.button.jusIcon}/>
               </ParallaxButton>
-            
+            </Button>
             </GridItem>
           </GridContainer>
         </div>

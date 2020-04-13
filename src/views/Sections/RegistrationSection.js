@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {ParallaxButton} from 'react-parallax-button';
 // import { makeUseAxios } from 'axios-hooks';
 // import axios from 'axios';
@@ -17,8 +17,8 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 //import InfoArea from "components/InfoArea/InfoArea.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
-import NavPills from "components/NavPills/NavPills.js"
-import Button from "components/CustomButtons/Button.js"
+import NavPills from "components/NavPills/NavPills.js";
+import Button from "components/CustomButtons/Button.js";
 import studio1 from "assets/img/examples/studio-1.jpg";
 import studio2 from "assets/img/examples/studio-2.jpg";
 import studio3 from "assets/img/examples/studio-3.jpg";

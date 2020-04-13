@@ -27,17 +27,44 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
+  const classes = useStyles();
+  const { ...rest } = props;
+  const [validity, setValidity]= React.useState(false);
+  const asso = useFormIput(validity);
+  const email = useFormIput(validity);
+  const password = useFormIput(validity);
+  const [assoRegexp]= React.useState(/^([a-zA-Z]){2,15}$/)
+  const [emailRegexp]= React.useState(/^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2}|aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel)$/)
+
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {
     setCardAnimation("");
   }, 700);
-  const classes = useStyles();
-  const { ...rest } = props;
+  //const [loginValidity, setloginValidity] = React.useState(false);
 
-  const handleSubmit = (event) => {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
+  React.useEffect(()=>{
+    setValidity(assoRegexp.test(asso.value)? false : true);
+    console.log("assoValidity: " + asso.validity);
+    setValidity(emailRegexp.test(email.value)? false : true);
+    console.log("emailValidity: " + email.validity);
+  }, [assoRegexp, asso.value, asso.validity, emailRegexp, email.value, email.validity])
+
+function useFormIput(){
+  const [value, setValue] = React.useState();
+  
+  const handlChange = (e) => {
+      setValue(e.target.value);
   }
+  return {
+    value,
+    onChange: handlChange,
+  }
+}
+const handleSubmit = (e) => {
+  alert('Data weree submitted: ' + asso.value +" "+ email.value +" "+ password.value);
+  e.preventDefault();
+}
+  
   return (
     <div>
       <Header
@@ -92,12 +119,15 @@ export default function LoginPage(props) {
                       </Button>
                     </div>
                   </CardHeader>
-                  <p className={classes.divider}>Welcome in</p>
+                  <p className={classes.divider}>Bienvenue !</p>
                   <CardBody>
                     <CustomInput
-                      labelText="First Name..."
-                      id="first"
+                      labelText="Nom de l'assocation..."
+                      id="asso"
+                      pattern=""
+                      {...asso}
                       formControlProps={{
+                        error:asso.validity,
                         fullWidth: true
                       }}
                       inputProps={{
@@ -112,8 +142,12 @@ export default function LoginPage(props) {
                     <CustomInput
                       labelText="Email..."
                       id="email"
+                      {...email}
+                      validators={['required', 'isEmail']}
                       formControlProps={{
-                        fullWidth: true
+                        fullWidth: true,
+                        error:true,
+                        validators:['required', 'isEmail'],
                       }}
                       inputProps={{
                         type: "email",
@@ -123,10 +157,15 @@ export default function LoginPage(props) {
                           </InputAdornment>
                         )
                       }}
+                      formHelperTextProps={{
+                        error:true,
+                        helpertext:"l'adresse email est invalide !"
+                      }}
                     />
                     <CustomInput
-                      labelText="Password"
+                      labelText="Mot de passe"
                       id="pass"
+                      {...password}
                       formControlProps={{
                         fullWidth: true
                       }}

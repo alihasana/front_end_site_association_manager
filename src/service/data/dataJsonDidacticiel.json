@@ -20,6 +20,11 @@
             "id": 4,
             "question": "Ensvisagez-vous des adhérents ?",
             "choix": ["Non", "Oui"]
+        },
+        {
+            "id": 5,
+            "question": "Ensvisagez-vous des adhérents ?",
+            "choix": []
         }
     ]
 }

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -20,24 +21,26 @@ import GridItem from "components/Grid/GridItem.js";
 import Parallax from "components/Parallax/Parallax.js";
 import NavSearch from "components/NavSearch/NavSearch.js";
 import Button from "components/CustomButtons/Button.js";
+
 // sections for this page
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import ProductSection from "./Sections/ProductSection";
 import WorkSection from "./Sections/WorkSection.js";
+import BannerSection from "./Sections/BannerSection.js";
+
 
 import logo from "assets/img/logo512.png";
 
 import styles from "assets/jss/material-kit-react/views/homePage.js";
-import {red} from "@material-ui/core/colors";
-
 
 const useStyles = makeStyles(styles);
+
 
 export default function HomePage(props) {
   const classes = useStyles();
   const { ...rest } = props;
   console.log({...rest});
-  
+
   const imageClasses = classNames(
     classes.imgRaised,
     classes.imgRoundedCircle,
@@ -47,15 +50,7 @@ export default function HomePage(props) {
     <div>
       <Header
         brand="Association Manager"
-        rightLinks={<HeaderLinks 
-                        overrides={{
-                          LinkAnchor:{
-                            a:{
-                              color: red + "!important"
-                            }
-                          }
-                        }} 
-                    />}
+        rightLinks={<HeaderLinks/>}
         fixed
         color="transparent"
         changeColorOnScroll={{
@@ -64,6 +59,7 @@ export default function HomePage(props) {
         }}
         {...rest}
       />
+
       <Parallax image={require("assets/img/bg4.jpeg")}>
         <div className={classes.container}>
           <GridContainer>
@@ -82,19 +78,22 @@ export default function HomePage(props) {
           </GridContainer>
         </div>
       </Parallax>
-
+      <div>
+        <BannerSection/>
+      </div>
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <ProductSection />
-        <WorkSection />
+        <ProductSection/>
+        <WorkSection/>
         <GridContainer justify="center">
           <Link to="/Landing-page" justify="center" >
             <Button color="linkColor" simple size="lg"> 
             Inscrire mon association
             </Button>
           </Link>
-        </GridContainer>
+        </GridContainer>      
       </div>
-      <Footer />
+
+      <Footer/>
     </div>
   );
 }
