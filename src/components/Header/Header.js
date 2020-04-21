@@ -9,12 +9,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
 // core components
+import Button from "../CustomButtons/Button.js";
 import styles from "assets/jss/material-kit-react/components/headerStyle.js";
 
 const useStyles = makeStyles(styles);
@@ -61,7 +61,7 @@ export default function Header(props) {
     [classes.absolute]: absolute,
     [classes.fixed]: fixed
   });
-  const brandComponent = <Link to={"/"} className={classes.title} ><Button className={classes.title}>{brand}</Button></Link>;
+  const brandComponent = <Link to={"/"} className={classes.title} ><Button className={classes.title} simple color="white">{brand}</Button></Link>;
   return (
     <AppBar className={appBarClasses}>
       <Toolbar className={classes.container}>
@@ -122,6 +122,7 @@ Header.propTypes = {
     "transparent",
     "white",
     "rose",
+    "blue",
     "dark"
   ]),
   rightLinks: PropTypes.node,
@@ -146,6 +147,7 @@ Header.propTypes = {
       "transparent",
       "white",
       "rose",
+      "blue",
       "dark"
     ]).isRequired
   })

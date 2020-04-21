@@ -26,8 +26,8 @@ import Button from "components/CustomButtons/Button.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import ProductSection from "./Sections/ProductSection";
 import WorkSection from "./Sections/WorkSection.js";
-import BannerSection from "./Sections/BannerSection.js";
 
+import backgroundImage from "assets/img/bg4.jpeg";
 
 import logo from "assets/img/logo512.png";
 
@@ -52,15 +52,14 @@ export default function HomePage(props) {
         brand="Association Manager"
         rightLinks={<HeaderLinks/>}
         fixed
-        color="transparent"
+        color="blue"
         changeColorOnScroll={{
           height: 400,
           color: "white"
         }}
         {...rest}
       />
-
-      <Parallax image={require("assets/img/bg4.jpeg")}>
+      <Parallax image={backgroundImage}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
@@ -78,9 +77,6 @@ export default function HomePage(props) {
           </GridContainer>
         </div>
       </Parallax>
-      <div>
-        <BannerSection/>
-      </div>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <ProductSection/>
         <WorkSection/>

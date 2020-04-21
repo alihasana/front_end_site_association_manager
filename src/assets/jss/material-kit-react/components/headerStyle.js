@@ -7,10 +7,14 @@ import {
   warningColor,
   dangerColor,
   roseColor,
+  blueLightColor,
   transition,
   boxShadow,
   drawerWidth
 } from "assets/jss/material-kit-react.js";
+
+//import bgImage from "assets/img/bg4.jpeg";
+
 
 const headerStyle = {
   appBar: {
@@ -103,6 +107,12 @@ const headerStyle = {
     color: "#FFFFFF",
     boxShadow:
       "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(233, 30, 99, 0.46)"
+  },
+  blue: {
+    backgroundColor: blueLightColor, //backgroundImage: bgImage,
+    color: "#FFFFFF",
+    boxShadow:
+      "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(130, 197, 235, 0.46)"
   },
   transparent: {
     backgroundColor: "transparent !important",
