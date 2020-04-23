@@ -1,23 +1,23 @@
 {
-    "data":[{
+    "ads":[{
         "id": 1,
         "title" : "Titre éventuel de l'annonce 1",
         "description": "Description éventuelle de l'annnonce 1",
         "textAnimation": "Texe d'animation 1",
-        "url": "src/assets/img/bg.jpg"
+        "imageUrl": "assets/img/bg.jpg"
     },
     {
         "id": 2,
         "title" : "Titre éventuel de l'annonce 2",
         "description": "Description éventuelle de l'annnonce 2",
         "textAnimation": "Texe d'animation 2",
-        "url": "src/assets/img/IhCNTqPpLeTNnwr.jpg"
+        "imageUrl": "assets/img/IhCNTqPpLeTNnwr.jpg"
     },
     {
         "id": 3,
         "title" : "Titre éventuel de l'annonce 3",
         "description": "Description éventuelle de l'annnonce 3",
         "textAnimation": "Texe d'animation 3",
-        "url": "src/assets/img/uaQVvDrCwryVlbb.jpg"
+        "imageUrl": "assets/img/uaQVvDrCwryVlbb.jpg"
     }]
 }

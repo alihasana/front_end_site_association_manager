@@ -52,10 +52,10 @@ export default function HomePage(props) {
         brand="Association Manager"
         rightLinks={<HeaderLinks/>}
         fixed
-        color="blue"
+        color="transparent"
         changeColorOnScroll={{
-          height: 400,
-          color: "white"
+          height: 50,
+          color: "blue"
         }}
         {...rest}
       />
