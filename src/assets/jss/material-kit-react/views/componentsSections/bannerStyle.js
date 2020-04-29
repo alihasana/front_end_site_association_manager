@@ -33,9 +33,12 @@ const bannerStyle = {
       },
     }
   },
-  section: {
+  main: {
+    backgroundImage: "inherit",
     padding: "70px 0",
-    boxSizing: "initial"
+    boxSizing: "initial",
+    position: "relative",
+    zIndex: "3"
   },
   container
 };

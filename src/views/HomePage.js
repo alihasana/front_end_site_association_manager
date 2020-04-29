@@ -77,7 +77,7 @@ export default function HomePage(props) {
           </GridContainer>
         </div>
       </Parallax>
-      <div className={classNames(classes.main, classes.mainRaised)}>
+      <div className={classNames(classes.main, classes.mainRaised)} >
         <ProductSection/>
         <WorkSection/>
         <GridContainer justify="center">

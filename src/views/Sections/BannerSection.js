@@ -23,9 +23,9 @@ export default function BannerSection(props) {
     const classes = useStyles();
     const classesBanner = classNames(
         classes.banner,
-        classes.section,
-        classes.container
-    );
+        classes.container,
+        classes.main
+        );
     const {elements} = props;
     const bannerAnim = (
         elements.map((prop, key) =>
@@ -34,10 +34,10 @@ export default function BannerSection(props) {
             >
                 <BgElement
                     key="bg"
-                    className="bg"
-                    style={{
-                        backgroundImage: `url('${prop.image}') !important`
-                    }}
+                    className={classNames(
+                        "bg",
+                        `backgroundImage: url('${prop.image}') !important`)
+                        }
                 />
                 <QueueAnim name="QueueAnim">
                     <h1 key="h1">{prop.title}</h1>

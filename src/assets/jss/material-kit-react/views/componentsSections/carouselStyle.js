@@ -1,13 +1,15 @@
 import { container } from "assets/jss/material-kit-react.js";
 
 const carouselStyle = {
-  section: {
-    padding: "70px 0"
-  },
-  container,
-  marginAuto: {
-    marginLeft: "auto !important",
-    marginRight: "auto !important"
+    marginAuto: {
+    ...container,
+    flexBasis: "auto",
+    position: "relative",
+    overflow: "hidden",
+    height: "350px",
+    boxSizing: "border-box",
+    fontSize: ".875rem",
+    zIndex: "3"
   }
 };
 
