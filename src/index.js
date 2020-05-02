@@ -24,12 +24,13 @@ ReactDOM.render(
   <Router history={hist}>
     <Parallax small image={backgroundImage}>
     </Parallax>
-      <SectionCarousel elements={bannerData.ads.map(data => ({
-         title: data.title,
-         image: data.imageUrl,
-         descritption: data.descritption,
-      })
-      )}/>
+    <SectionCarousel elements={bannerData.ads.map(data => 
+        ({
+          title: data.title,
+          image: data.imageUrl
+        })
+      )}
+    />
     <Switch>
       <Route path="/profile-page" component={ProfilePage} /> 
       <Route path="/landing-page" component={LandingPage} />
