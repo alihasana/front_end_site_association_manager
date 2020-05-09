@@ -37,7 +37,8 @@ const registerStyle = {
     width: "260px"
   },
   margin: {
-    textAlign: "center !important"
+    textAlign: "center !important",
+    height: "initial"
   },
   inputAdornment: {
     marginBottom: "25px"
@@ -45,6 +46,18 @@ const registerStyle = {
   button: {
     margin: "0px",
     padding: "0px"
+  },
+  crop:{
+    overflow: "hidden",
+    height: "194px"
+  },
+  image:{
+    width: "140%",
+    filter: "grayscale(100%)"
+  },
+  imgActive:{
+    width: "140%",
+    filter: "grayscale(0%)"
   },
   ...imagesStyles
 };

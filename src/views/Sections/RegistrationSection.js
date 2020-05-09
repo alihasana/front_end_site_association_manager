@@ -5,11 +5,14 @@ import {ParallaxButton} from 'react-parallax-button';
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+//import FormControlLabel from "@material-ui/core/FormControlLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
+//import Radio from "@material-ui/core/Radio";
 
 // @material-ui/icons
 //import { Storefront, FolderShared, SupervisorAccount, CompareArrows, StayCurrentPortrait } from "@material-ui/icons";
 //import Chat from "@material-ui/icons/Chat";
+//import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
 
 
 // core components
@@ -19,14 +22,11 @@ import GridItem from "components/Grid/GridItem.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Button from "components/CustomButtons/Button.js";
-import studio1 from "assets/img/examples/studio-1.jpg";
-import studio2 from "assets/img/examples/studio-2.jpg";
-import studio3 from "assets/img/examples/studio-3.jpg";
-import studio4 from "assets/img/examples/studio-4.jpg";
 
 import dataJson from 'service/data/dataJsonDidacticiel.json';
 
 import styles from "assets/jss/material-kit-react/views/landingPageSections/registerStyle.js";
+
 
  
 /* const useAxios = makeUseAxios({
@@ -36,13 +36,14 @@ const useStyles = makeStyles(styles);
 
 export default function RegistrationSection() {
   const classes = useStyles();
-  const images = [studio1,studio2,studio3,studio4];
 
   const classseImage = classNames(
       classes.imgRaised,
       classes.imgRounded,
-      classes.imgFluid
+      classes.crop
   )
+  const [selectedEnabled, setSelectedEnabled] = React.useState();
+  
   const dataFormQ = 
    <NavPills
       tabs= {dataJson.data.map(data => { if (data.choix.length===0) 
@@ -100,10 +101,12 @@ export default function RegistrationSection() {
                 let smValue = 6  
                 if (data.choix.length>=3){
                     smValue = 4
-                }  
+                }
                 return <GridItem xs={12} sm={smValue} key={index} className={classes.margin} data-answer-id={index} data-answer-weight="300">
-                  <img className={classseImage} src={images[index]} alt=""/>
-                  <span className="answer-text">{element}</span>
+                  <div className={classseImage} onClick={() => setSelectedEnabled(data.id.toString()+""+index)}>
+                    <img className={selectedEnabled===(data.id.toString()+""+index)?classes.imgActive:classes.image} src={data.imageUrl[index]} alt={data.choix[index]}/>
+                  </div>
+              <span className="answer-text">{element}</span>
                 </GridItem>
                 }
             )}

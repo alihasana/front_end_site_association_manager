@@ -17,7 +17,6 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Button from "components/CustomButtons/Button.js";
 
-
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 
 // Sections for this page
@@ -54,14 +53,13 @@ export default function LandingPage(props) {
             <GridItem xs={12} sm={12} md={6}>
               <h1 className={classes.title}>Inscription</h1>
               <h4><span>
-              
-La création d’une association doit obligatoirement être publiée au JOAFE afin que son existence soit reconnue sur un plan juridique.
-La publication au JOAFE s’effectue sur le site de consultation à l'adresse suivante : www.journal-officiel.gouv.fr. Dès la mise en ligne
-de votre annonce vous pouvez télécharger le justificatif de publication. Il donne accès aux informations publiées au JOAFE dans des
-conditions de nature à garantir son authenticité par une signature électronique et une accessibilité permanente.
-Pour tout renseignement concernant la publication de votre annonce, vous pouvez vous rendre sur le site :
-www.journal-officiel.gouv.fr, rubrique " Nous contacter ".
-</span></h4>
+              La création d’une association doit obligatoirement être publiée au JOAFE afin que son existence soit reconnue sur un plan juridique.
+              La publication au JOAFE s’effectue sur le site de consultation à l'adresse suivante : www.journal-officiel.gouv.fr. Dès la mise en ligne
+              de votre annonce vous pouvez télécharger le justificatif de publication. Il donne accès aux informations publiées au JOAFE dans des
+              conditions de nature à garantir son authenticité par une signature électronique et une accessibilité permanente.
+              Pour tout renseignement concernant la publication de votre annonce, vous pouvez vous rendre sur le site :
+              www.journal-officiel.gouv.fr, rubrique " Nous contacter ".
+              </span></h4>
             <br />
             <Button className={classes.button} simple>
               <ParallaxButton 
@@ -87,6 +85,9 @@ www.journal-officiel.gouv.fr, rubrique " Nous contacter ".
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
        <RegistrationSection/>
+       <GridItem>
+       Icons made by <a href="https://www.flaticon.com/authors/fjstudio" title="fjstudio">fjstudio</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+       </GridItem>
       </div>
       <Footer />
     </div>

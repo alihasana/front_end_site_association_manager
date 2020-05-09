@@ -9,10 +9,10 @@ import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
-import styles from "assets/jss/material-kit-react/views/componentsSections/carouselStyle.js";
+import styles from "assets/jss/material-kit-react/views/componentsSections/adsStyle.js";
 
 const useStyles = makeStyles(styles);
-export default function SectionCarousel(props) {
+export default function SectionAds(props) {
   const classes = useStyles();
   // const [pagingImg, setPagingImg] = React.useState([]) ;
   const imgClass = classNames(
@@ -58,7 +58,7 @@ export default function SectionCarousel(props) {
   );
 }
 
-SectionCarousel.propTypes = {
+SectionAds.propTypes = {
   elements: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,

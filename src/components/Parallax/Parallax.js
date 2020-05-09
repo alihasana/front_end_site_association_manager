@@ -14,7 +14,7 @@ const useStyles = makeStyles(styles);
 export default function Parallax(props) {
   let windowScrollTop;
   if (window.innerWidth >= 768) {
-    windowScrollTop = window.pageYOffset / 3;
+    windowScrollTop = window.pageYOffset/8;
   } else {
     windowScrollTop = 0;
   }
@@ -32,7 +32,7 @@ export default function Parallax(props) {
     };
   });
   const resetTransform = () => {
-    var windowScrollTop = window.pageYOffset / 3;
+    var windowScrollTop = window.pageYOffset/8;
     setTransform("translate3d(0," + windowScrollTop + "px,0)");
   };
   const { filter, className, children, style, image, small } = props;

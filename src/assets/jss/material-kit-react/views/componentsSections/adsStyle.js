@@ -1,4 +1,4 @@
-const carouselStyle = {
+const adsStyle = {
   marginAuto: {
     margin: "0px",
     padding: "0px",
@@ -24,13 +24,16 @@ const carouselStyle = {
       height: "45px",
       backgroundColor: "transparent",
       textDecoration: "none",
+      boxShadow: "0 2px 2px 0 rgba(0, 0, 0, 0.14)",
     },
     "& li img": {
       width: "100%",
       height: "100%",
       filter: "grayscale(100%)",
     },
-    "& li.slick-active button img": {
+    "& li.slick-active img": {
+        width: "66px",
+        height: "50px",
         filter: "grayscale(0%)",
     },
     ".slick-dots": {
@@ -39,4 +42,4 @@ const carouselStyle = {
   }
 };
 
-export default carouselStyle;
+export default adsStyle;

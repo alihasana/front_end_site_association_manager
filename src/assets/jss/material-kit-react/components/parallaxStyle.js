@@ -1,7 +1,7 @@
 const parallaxStyle = {
   parallax: {
     height: "90vh",
-    maxHeight: "1000px",
+    maxHeight: "2000px",
     overflow: "hidden",
     position: "relative",
     backgroundPosition: "center center",
@@ -14,7 +14,7 @@ const parallaxStyle = {
   },
   filter: {
     "&:before": {
-      background: "rgba(0, 0, 0, 0.5)"
+      background: "rgba(0, 0, 0, 0.25)"
     },
     "&:after,&:before": {
       position: "absolute",
