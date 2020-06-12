@@ -60,7 +60,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "heroku-postbuild": "np install",
+    "heroku-postbuild": "npm install",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
