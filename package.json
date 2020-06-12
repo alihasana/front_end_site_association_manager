@@ -2,7 +2,7 @@
   "name": "assocation-manager-front",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://associations-manager.herokuapp.com/",
   "engines": {
     "node": "12.x",
     "npm": "6.x"
