@@ -2,6 +2,7 @@
   "name": "assocation-manager-front",
   "version": "0.1.0",
   "private": true,
+  "main": "app.js",
   "engines": {
     "node": "12.x",
     "npm": "6.x"
@@ -61,7 +62,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "heroku-postbuild": "npm install",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"
