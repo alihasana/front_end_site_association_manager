@@ -1,4 +1,4 @@
-import button from "../material-kit-react/components/buttonStyle";
+import button from "./buttonStyle";
 
 const modalStyle = {
   modal: {

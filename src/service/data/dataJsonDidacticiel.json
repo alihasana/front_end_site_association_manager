@@ -31,6 +31,13 @@
             "question": "Ensvisagez-vous des adhérents ?",
             "choix": ["Non", "Oui"],
             "imageUrl": ["https://pixabay.com/get/57e5d6414256ae14f1dc8460da2932761c3fdfe5535879_640.jpg","https://pixabay.com/get/57e1d4404b54b10ff3d89960c62d3f77153edee15457_640.jpg"]
+        },
+        {
+            "id":6,
+            "question":"Avez-vous réalisé une assemblé constitutive?",
+            "choix":["Non","Oui"],
+            "info":"Veuillez-vous référer au kit gratuit par le biais du bouton juste au dessus de se formulaire",
+            "imageUrl":[]
         }
     ]
 }

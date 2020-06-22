@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useState, useEffect, useContext, createContext } from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 import "assets/scss/material-kit-react.scss?v=1.8.0";
 //import { container } from "assets/jss/material-kit-react.js";
 
 import SectionAds from "./views/Sections/SectionAds";
 import bannerData from "./service/data/dataJsonAnnonce.json";
+import useAuth from "./auth/useAuth";
 
 import backgroundImage from "assets/img/bg4.jpeg";
 
@@ -20,6 +21,29 @@ import FirstBgHeader from "components/FirstBgHeader/FirstBgHeader.js";
   
 var hist = createBrowserHistory();
 
+
+const auth = useAuth();
+
+const [user, setUser] = useState(null);
+
+const PrivateRoute = ({ children, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        auth.isAuthenticated?
+          children
+        :
+          <Redirect
+            to={{
+              pathname: "/login-page",
+              state: { from: location }
+            }}
+          />
+      }
+    />
+  );
+}
 ReactDOM.render(
   <Router history={hist}>
     <FirstBgHeader small image={backgroundImage}>
@@ -31,7 +55,7 @@ ReactDOM.render(
                 }/>
     <Switch> 
       <Route path="/profile-page" component={ProfilePage} /> 
-      <Route path="/landing-page" component={LandingPage} />
+      <PrivateRoute path="/landing-page" component={LandingPage} />
       <Route path="/login-page" component={LoginPage} />
       <Route path="/" component={HomePage} />
     </Switch>

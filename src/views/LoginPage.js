@@ -1,4 +1,7 @@
 import React from "react";
+
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -60,6 +63,21 @@ function useFormIput(){
     onChange: handlChange,
   }
 }
+
+/* let history = useHistory();
+let location = useLocation();
+
+let { from } = location.state || { from: { pathname: "/" } };
+let login = () => {
+  fakeAuth.authenticate(() => {
+    history.replace(from);
+  });
+};
+ */
+const responseFacebook = (response) => {
+    console.log(response)
+}
+
 const handleSubmit = (e) => {
   alert('Data weree submitted: ' + asso.value +" "+ email.value +" "+ password.value);
   e.preventDefault();
@@ -99,15 +117,23 @@ const handleSubmit = (e) => {
                       >
                         <i className={"fab fa-twitter"} />
                       </Button>
-                      <Button
-                        justIcon
-                        href="#pablo"
-                        target="_blank"
-                        color="transparent"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <i className={"fab fa-facebook"} />
-                      </Button>
+                      <FacebookLogin
+                        appId="1952300694903762"
+                        autoLoad={true}
+                        fields="name,email,picture"
+                        callback={responseFacebook}
+                        render={renderProps => (
+                          <Button
+                            justIcon
+                            href="#pablo"
+                            target="_blank"
+                            color="transparent"
+                            onClick={renderProps.onClick}
+                          >
+                            <i className={"fab fa-facebook"} />
+                          </Button>
+                        )}
+                      />
                       <Button
                         justIcon
                         href="#pablo"
