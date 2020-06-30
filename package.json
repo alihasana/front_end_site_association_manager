@@ -54,6 +54,7 @@
     "react-scripts": "^3.4.1",
     "react-slick": "^0.25.2",
     "react-swipeable-views": "^0.13.9",
+    "react-toastify": "^6.0.6",
     "react-window-size": "^1.2.2",
     "redux": "^4.0.1",
     "sass": "^1.26.3",

@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
@@ -23,7 +24,7 @@ import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
-import useAuth from "../auth/useAuth.js";
+import AuthAPI from "../auth/AuthAPI.js";
 
 import image from "assets/img/PeleMeleAsso.png";
 import { Link } from "react-router-dom";
@@ -42,7 +43,7 @@ export default function LoginPage(props) {
   const [showPasswordIcon, setShowPasswordIcon] = React.useState('feather icon-eye'); 
   const [assoRegexp]= React.useState(/^([a-zA-Z]){2,15}$/)
   const [emailRegexp]= React.useState(/^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2}|aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel)$/)
-
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {
@@ -78,28 +79,25 @@ togglePasswordVisibility = () => {
     setShowPasswordIcon('feather icon-eye');
   }
 }
-/* let history = useHistory();
-let location = useLocation();
 
-let { from } = location.state || { from: { pathname: "/" } };
-let login = () => {
-  fakeAuth.authenticate(() => {
-    history.replace(from);
-  });
-};
- */
 const responseFacebook = (response) => {
-    console.log(response)
-}
+  try {
+    await AuthAPI.authenticate(response.email, response.password);
+    setIsAuthenticated(true);
+    history.replace(from);
+  } catch (error) {
+      toast.error("Ce compte n'est pas reconnu dans l'application, veuillez vous s'inscrire!");
+  }
 
 const handleSubmit = (e) => {
   e.preventDefault();
+  let history = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/landing-page" } };
   try {
-    await AuthAPI.authenticate(email, password);
-    this.setState({error :""});
-    this.setState({isAuthenticated :true});
-    // TODO: need to change depends on user role
-    this.props.history.push('/sadmin')
+    await AuthAPI.authenticate(email.value, password.value);
+    setIsAuthenticated(true);
+    history.replace(from);
 } catch (error) {
     toast.error("Vérifiez vos identifiants de connexion !");
 }

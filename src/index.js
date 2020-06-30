@@ -18,7 +18,7 @@ import LoginPage from "views/LoginPage.js";
 import LandingPage from "views/LandingPage.js";
 import ProfilePage from "views/ProfilePage.js";
 import FirstBgHeader from "components/FirstBgHeader/FirstBgHeader.js";
-import AuthAPI from './service/AuthAPI.js';
+import AuthAPI from './auth/AuthAPI.js';
   
 var hist = createBrowserHistory();
 AuthAPI.setup();
