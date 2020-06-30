@@ -23,11 +23,13 @@ import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
+import useAuth from "../auth/useAuth.js";
 
 import image from "assets/img/PeleMeleAsso.png";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(styles);
+const auth = useAuth();
 
 export default function LoginPage(props) {
   const classes = useStyles();
@@ -36,9 +38,12 @@ export default function LoginPage(props) {
   const asso = useFormIput(validity);
   const email = useFormIput(validity);
   const password = useFormIput(validity);
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPasswordIcon, setShowPasswordIcon] = React.useState('feather icon-eye'); 
   const [assoRegexp]= React.useState(/^([a-zA-Z]){2,15}$/)
   const [emailRegexp]= React.useState(/^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2}|aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel)$/)
 
+  
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {
     setCardAnimation("");
@@ -63,7 +68,16 @@ function useFormIput(){
     onChange: handlChange,
   }
 }
-
+togglePasswordVisibility = () => {
+  if(!showPassword){
+    setShowPassword(true);
+    setShowPasswordIcon('feather icon-eye-off');
+  }
+  else{
+    setShowPassword(false);
+    setShowPasswordIcon('feather icon-eye');
+  }
+}
 /* let history = useHistory();
 let location = useLocation();
 
@@ -79,8 +93,17 @@ const responseFacebook = (response) => {
 }
 
 const handleSubmit = (e) => {
-  alert('Data weree submitted: ' + asso.value +" "+ email.value +" "+ password.value);
   e.preventDefault();
+  try {
+    await AuthAPI.authenticate(email, password);
+    this.setState({error :""});
+    this.setState({isAuthenticated :true});
+    // TODO: need to change depends on user role
+    this.props.history.push('/sadmin')
+} catch (error) {
+    toast.error("Vérifiez vos identifiants de connexion !");
+}
+
 }
   
   return (

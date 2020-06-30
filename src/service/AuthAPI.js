@@ -1,6 +1,5 @@
 import axios from "axios";
-import jwtDecode from "jwt-decode";
-
+import jwtDecode from "jwt-decode"
 
 /**s
  * Requête HTTP d'authentification et stockage du token dans le storage et sur Axios
@@ -18,7 +17,7 @@ function authenticate(username, password) {
             // On prévient Axios qu'on a maintenant un header par défaut sur toutes nos futures requetes HTTP
             setAxiosToken(token);
         });
-}
+    }
 
 /**
  * Positionne le token JWT sur Axios
@@ -55,16 +54,16 @@ function isAuthenticated() {
         return false;
     }
     return false;
-
 }
 
 function logout () {
     window.localStorage.removeItem("authToken");
     delete axios.defaults.headers["Authorization"];
 }
+
 export default {
     authenticate,
     setup,
     isAuthenticated,
     logout,
-};
+}
