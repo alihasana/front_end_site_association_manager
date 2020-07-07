@@ -8,7 +8,6 @@ import "assets/scss/material-kit-react.scss?v=1.8.0";
 
 import SectionAds from "./views/Sections/SectionAds";
 import bannerData from "./service/data/dataJsonAnnonce.json";
-import useAuth from "./auth/useAuth";
 
 import backgroundImage from "assets/img/bg4.jpeg";
 
