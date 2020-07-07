@@ -1,15 +1,19 @@
 import React from "react";
 import { toast } from "react-toastify";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Icon from "@material-ui/core/Icon";
+import IconButton from '@material-ui/core/IconButton';
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
-import People from "@material-ui/icons/People";
+/* import People from "@material-ui/icons/People"; */
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
@@ -27,25 +31,30 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import AuthAPI from "../auth/AuthAPI.js";
 
 import image from "assets/img/PeleMeleAsso.png";
-import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(styles);
-const auth = useAuth();
 
 export default function LoginPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
+
+  const history = useHistory();
+  const location = useLocation();
+
+  const { from } = location.state || { from: { pathname: "/landing-page" } };
+
   const [validity, setValidity]= React.useState(false);
   const asso = useFormIput(validity);
   const email = useFormIput(validity);
   const password = useFormIput(validity);
   const [showPassword, setShowPassword] = React.useState(false);
-  const [showPasswordIcon, setShowPasswordIcon] = React.useState('feather icon-eye'); 
+  const [showPasswordIcon, setShowPasswordIcon] = React.useState(<Visibility />); 
   const [assoRegexp]= React.useState(/^([a-zA-Z]){2,15}$/)
   const [emailRegexp]= React.useState(/^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2}|aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel)$/)
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-  
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  const [fbk, setFbk] = React.useState();
+
   setTimeout(function() {
     setCardAnimation("");
   }, 700);
@@ -60,7 +69,6 @@ export default function LoginPage(props) {
 
 function useFormIput(){
   const [value, setValue] = React.useState();
-  
   const handlChange = (e) => {
       setValue(e.target.value);
   }
@@ -69,41 +77,31 @@ function useFormIput(){
     onChange: handlChange,
   }
 }
-togglePasswordVisibility = () => {
+const togglePasswordVisibility = () => {
   if(!showPassword){
     setShowPassword(true);
-    setShowPasswordIcon('feather icon-eye-off');
+    setShowPasswordIcon(<VisibilityOff />);
   }
   else{
     setShowPassword(false);
-    setShowPasswordIcon('feather icon-eye');
+    setShowPasswordIcon(<Visibility /> );
   }
 }
 
 const responseFacebook = (response) => {
-  try {
-    await AuthAPI.authenticate(response.email, response.password);
-    setIsAuthenticated(true);
-    history.replace(from);
-  } catch (error) {
-      toast.error("Ce compte n'est pas reconnu dans l'application, veuillez vous s'inscrire!");
-  }
-
-const handleSubmit = (e) => {
+setFbk("accessToken : ---> " + response.accessToken+"\n scope : ---> " + response.name + "\n" +response.picture + "\n" + response.email)
+}
+const handleSubmit = async (e) => {
   e.preventDefault();
-  let history = useHistory();
-  let location = useLocation();
-  let { from } = location.state || { from: { pathname: "/landing-page" } };
   try {
     await AuthAPI.authenticate(email.value, password.value);
     setIsAuthenticated(true);
     history.replace(from);
-} catch (error) {
-    toast.error("Vérifiez vos identifiants de connexion !");
+  } catch (error) {
+      toast.error("Vérifiez vos identifiants de connexion !");
+  }
 }
 
-}
-  
   return (
     <div>
       <Header
@@ -132,7 +130,6 @@ const handleSubmit = (e) => {
                       <Button
                         justIcon
                         href="#pablo"
-                        target="_blank"
                         color="transparent"
                         onClick={e => e.preventDefault()}
                       >
@@ -141,13 +138,12 @@ const handleSubmit = (e) => {
                       <FacebookLogin
                         appId="1952300694903762"
                         autoLoad={true}
-                        fields="name,email,picture"
+                        fields="name, email, picture"
                         callback={responseFacebook}
                         render={renderProps => (
                           <Button
                             justIcon
                             href="#pablo"
-                            target="_blank"
                             color="transparent"
                             onClick={renderProps.onClick}
                           >
@@ -158,7 +154,6 @@ const handleSubmit = (e) => {
                       <Button
                         justIcon
                         href="#pablo"
-                        target="_blank"
                         color="transparent"
                         onClick={e => e.preventDefault()}
                       >
@@ -168,7 +163,7 @@ const handleSubmit = (e) => {
                   </CardHeader>
                   <p className={classes.divider}>Bienvenue !</p>
                   <CardBody>
-                    <CustomInput
+{/*                     <CustomInput
                       labelText="Nom de l'assocation..."
                       id="asso"
                       pattern=""
@@ -185,7 +180,7 @@ const handleSubmit = (e) => {
                           </InputAdornment>
                         )
                       }}
-                    />
+                    /> */}
                     <CustomInput
                       labelText="Email..."
                       id="email"
@@ -217,12 +212,12 @@ const handleSubmit = (e) => {
                         fullWidth: true
                       }}
                       inputProps={{
-                        type: "password",
+                        type: showPassword? "text": "password",
                         endAdornment: (
-                          <InputAdornment position="end">
-                            <Icon className={classes.inputIconsColor}>
-                              lock_outline
-                            </Icon>
+                          <InputAdornment position="end" >
+                            <IconButton className={classes.iconButton} onClick={togglePasswordVisibility} >
+                              {showPasswordIcon}
+                            </IconButton>
                           </InputAdornment>
                         ),
                         autoComplete: "off"
@@ -238,6 +233,7 @@ const handleSubmit = (e) => {
                       Inscrire mon association
                       </Button>
                     </Link>
+                    {fbk}
                   </CardFooter>
                 </form>
               </Card>

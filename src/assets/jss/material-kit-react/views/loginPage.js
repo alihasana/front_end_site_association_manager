@@ -92,6 +92,9 @@ const signupPageStyle = {
   },
   button : {
     paddingBottom : "0px"
+  },
+  iconButton : {
+    padding : "0px !important"
   }
 
 };
