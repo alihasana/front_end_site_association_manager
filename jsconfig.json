@@ -4,5 +4,15 @@
     "paths": {
       "*": ["src/*"]
     }
-  }
+  },
+    "FirebaseCredential":{
+      "apiKey": "",
+      "authDomain": "",
+      "databaseURL": "",
+      "projectId": "",
+      "storageBucket": "",
+      "messagingSenderId": "",
+      "appId": ""
+    }
+
 }

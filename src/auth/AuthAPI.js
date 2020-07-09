@@ -1,6 +1,5 @@
 import axios from "axios";
-import jwtDecode from "jwt-decode";
-
+import jwtDecode from "jwt-decode"
 
 /**s
  * Requête HTTP d'authentification et stockage du token dans le storage et sur Axios
@@ -13,12 +12,12 @@ function authenticate(username, password) {
         .then(response => response.data.token)
         .then(token => {
 
-            // Je stocké le token dans mon localStorage
+            // Je stocké le token dans le localStorage
             window.localStorage.setItem("authToken", token);
             // On prévient Axios qu'on a maintenant un header par défaut sur toutes nos futures requetes HTTP
             setAxiosToken(token);
         });
-}
+    }
 
 /**
  * Positionne le token JWT sur Axios
@@ -55,16 +54,34 @@ function isAuthenticated() {
         return false;
     }
     return false;
+}
 
+function isFbkAutenticated(response, username) {
+    // input_token={token-to-inspect} access_token={app-token-or-admin-token}
+    const inputToken = response.accesToken,
+        appToken = username
+
+    axios
+        .get("https://127.0.0.1:8000/api/debug_token", {inputToken, appToken})
+        .then(response => response.data.token)
+        .then(token => {
+
+            // Je stocké le token dans le localStorage
+            window.localStorage.setItem("authToken", token);
+            // On prévient Axios qu'on a maintenant un header par défaut sur toutes nos futures requetes HTTP
+            setAxiosToken(token);
+        });
 }
 
 function logout () {
     window.localStorage.removeItem("authToken");
     delete axios.defaults.headers["Authorization"];
 }
+
 export default {
     authenticate,
     setup,
     isAuthenticated,
+    isFbkAutenticated,
     logout,
-};
+}

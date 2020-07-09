@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, createContext } from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
@@ -8,7 +8,6 @@ import "assets/scss/material-kit-react.scss?v=1.8.0";
 
 import SectionAds from "./views/Sections/SectionAds";
 import bannerData from "./service/data/dataJsonAnnonce.json";
-import useAuth from "./auth/useAuth";
 
 import backgroundImage from "assets/img/bg4.jpeg";
 
@@ -16,22 +15,20 @@ import backgroundImage from "assets/img/bg4.jpeg";
 import HomePage from "views/HomePage.js";
 import LoginPage from "views/LoginPage.js";
 import LandingPage from "views/LandingPage.js";
-import ProfilePage from "views/ProfilePage";
+import ProfilePage from "views/ProfilePage.js";
 import FirstBgHeader from "components/FirstBgHeader/FirstBgHeader.js";
+import AuthAPI from './auth/AuthAPI.js';
   
 var hist = createBrowserHistory();
-
-
-const auth = useAuth();
-
-const [user, setUser] = useState(null);
+AuthAPI.setup();
 
 const PrivateRoute = ({ children, ...rest }) => {
+  const [isAuthenticated] = useState(AuthAPI.isAuthenticated) ;
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        auth.isAuthenticated?
+        isAuthenticated?
           children
         :
           <Redirect
