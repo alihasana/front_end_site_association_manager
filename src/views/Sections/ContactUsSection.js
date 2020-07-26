@@ -17,7 +17,7 @@ const useStyles = makeStyles(styles);
 
 export default function ContactUsSection(props) {
   const classes = useStyles();
-  const [descriptionText, idUs]= props
+  const {descriptionText, idUs} = props
 
   const handleSubmit = async (e) => {
     e.preventDefault();
