@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e95c4625499520aedc73f2107c627fea",
+    "revision": "ed0995987ebdbaee3a0f3237e2b023d2",
     "url": "/index.html"
   },
   {
-    "revision": "56065338cdd868be8727",
-    "url": "/static/css/main.8c41f0a1.chunk.css"
+    "revision": "54e8e43cb5bc74a60239",
+    "url": "/static/css/main.d9fcca0c.chunk.css"
   },
   {
-    "revision": "e5dea7476b63c54d59e9",
-    "url": "/static/js/2.73a6138a.chunk.js"
+    "revision": "901f56f770b223f16bd9",
+    "url": "/static/js/2.c5bec73c.chunk.js"
   },
   {
     "revision": "5e9b6f5c16b720e8a86875f97734673e",
-    "url": "/static/js/2.73a6138a.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.c5bec73c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "56065338cdd868be8727",
-    "url": "/static/js/main.2299c723.chunk.js"
+    "revision": "54e8e43cb5bc74a60239",
+    "url": "/static/js/main.8ff67cc2.chunk.js"
   },
   {
     "revision": "b26a6e11874742afa555",
@@ -40,8 +40,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/logo512.1e719472.png"
   },
   {
-    "revision": "1dd6d3ec0e31c34e8fc49c1329b7fd0a",
-    "url": "/static/media/logo_restau_coeur.1dd6d3ec.svg"
+    "revision": "f2e6988def86b3e8f3cdaa20025a2963",
+    "url": "/static/media/logo_restau_coeur.f2e6988d.svg"
   },
   {
     "revision": "dd94a4e56b440370d1100ef9d3dcb71e",
