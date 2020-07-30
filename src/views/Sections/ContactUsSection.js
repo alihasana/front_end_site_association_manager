@@ -17,7 +17,7 @@ const useStyles = makeStyles(styles);
 
 export default function ContactUsSection(props) {
   const classes = useStyles();
-  const {descriptionText, idUs} = props
+  const {descriptionText} = props
   let [name, setName] = useState('');
   let [nameError, setNameError] = useState('');
   let [email, setEmail] = useState('');
@@ -41,13 +41,50 @@ export default function ContactUsSection(props) {
     }
     if (name && email && message && acceptCondition){
       console.log('get all data');
-      try {
-        return await axios.get("/send-email/", {idUs});
-      } catch (error) {
-        return error;
-      }
+      return sendEmail();
     }
   }
+  const goToHome = () => window.location.reload(false);
+  const sendEmail = async () => {
+    let contact = {}
+    contact.name = name;
+    contact.message = message;
+    contact.subject = "Auto generated email";
+    contact.email = email;
+    console.log('contact :');
+    console.log(contact);
+    let query = `mutation
+                        {
+                          contactFront(
+                            name: "${contact.name}",
+                            message: "${contact.message}",
+                            subject: "${contact.subject}",
+                            email: "${contact.email}",
+                          
+                          ){
+                            status,
+                            code,
+                            message
+                          }
+                        }
+                  `;
+    console.log(query);
+    await axios({
+      url: 'https://back-end-node-store.herokuapp.com/graphql',
+      method: 'post',
+      data: {query},
+      headers: {
+        'Shopping-Cart': 'associationManager'
+      }
+    }).then((result) => {
+      console.log(result)
+      return goToHome()
+    }).catch((e) => {
+      console.log(e);
+      return goToHome()
+    });
+
+  };
   const handleInput = async data => {
     let inputId = data.target.id
     let inputValue = data.target.value
