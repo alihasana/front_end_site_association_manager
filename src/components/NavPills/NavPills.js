@@ -22,11 +22,15 @@ const useStyles = makeStyles(styles);
 
 export default function NavPills(props) {
   const [active, setActive] = useState(props.active);
+  const [selected, setSelected] = useState(0);
   const handleChange = (event, active) => {
     setActive(active);
+    setSelected(active);
+    
   };
   const handleChangeIndex = index => {    
     setActive(index);
+    setSelected(index);
   };
 
   const HandleNextTab = (event) =>{
@@ -155,13 +159,14 @@ export default function NavPills(props) {
 }
 
 NavPills.defaultProps = {
+  // index of the default active pill
   active: 0,
   color: "info"
 };
 
 NavPills.propTypes = {
-  // index of the default active pill
   active: PropTypes.number,
+  selected:PropTypes.number,
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       tabButton: PropTypes.string,

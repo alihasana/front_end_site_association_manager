@@ -1,4 +1,5 @@
 import React from "react";
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 import { ParallaxButton} from 'react-parallax-button';
@@ -33,6 +34,7 @@ export default function LandingPage(props) {
 
   const classes = useStyles();
   const { ...rest } = props;
+
 
   return (
     <div>

@@ -16,4 +16,12 @@ const useStyles = makeStyles(styles);
 export default function DonationsPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
+
+  return (
+    <div>
+      <Text>
+        texte
+      </Text>
+    </div>
+  )
 }

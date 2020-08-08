@@ -25,7 +25,7 @@ import Button from "components/CustomButtons/Button.js";
 // sections for this page
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import ProductSection from "./Sections/ProductSection";
-import WorkSection from "./Sections/WorkSection.js";
+import ContactUsSection from "./Sections/ContactUsSection.js";
 
 import backgroundImage from "assets/img/bg4.jpeg";
 
@@ -79,7 +79,7 @@ export default function HomePage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)} >
         <ProductSection/>
-        <WorkSection/>
+        <ContactUsSection/>
         <GridContainer justify="center">
           <Link to="/Landing-page" justify="center" >
             <Button color="linkColor" simple size="lg"> 

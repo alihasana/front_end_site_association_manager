@@ -26,6 +26,7 @@ import Button from "components/CustomButtons/Button.js";
 import dataJson from 'service/data/dataJsonDidacticiel.json';
 
 import styles from "assets/jss/material-kit-react/views/landingPageSections/registerStyle.js";
+import DidactModal from "components/DidactModal/DidactModal";
 
 
  
@@ -46,14 +47,18 @@ export default function RegistrationSection() {
   
   const dataFormQ = 
    <NavPills
-      tabs= {dataJson.data.map(data => { if (data.choix.length===0) 
+      tabs= {dataJson.data.map(data => { 
+        // If the field choix is an empty array so an input type text is activited
+        if (data.choix.length===0) 
         return {
           tabButton: data.id.toString(),
           tabContent: (
             <GridContainer className={classes.container} data-question-id={data.id} key={data.id.toString()}>
               <div className={classes.typo}>
                 <h2 className={classes.title}>{data.question}</h2>
+                <h3>{}</h3>
               </div>
+              <DidactModal active={NavPills.active} info={data.info} />
                 <GridItem xs={12} key={data.id} data-answer-id={data.id} data-answer-weight="300">
                 <CustomInput
                 labelText="Remplir"
