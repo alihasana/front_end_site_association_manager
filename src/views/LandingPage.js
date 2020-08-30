@@ -64,19 +64,19 @@ export default function LandingPage(props) {
               </span></h4>
             <br />
             <Button className={classes.button} simple>
-              <ParallaxButton 
+              <ParallaxButton
                 text="Kit gratuit"
                 parallaxScale={0.7}
-                backgroundStyle={{  
-                  background: `linear-gradient(right,  #0038F0, #0DBD5C)`,  
-                  borderRadius: '8px',  
-                  boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
-                }}  
-                textStyle={{  
-                  padding: '1.5em 2.5em 1.5em 2.5em',  
+                backgroundStyle={{
+                  background: `linear-gradient(right,  #0038F0, #0DBD5C)`,
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'
+                }}
+                textStyle={{
+                  padding: '1.5em 2.5em 1.5em 2.5em',
                   color: 'white',
                 }}
-                onClick={handleClick} 
+                onClick={handleClick}
                 >
                 <LibraryBooks className={classes.button.jusIcon}/>
               </ParallaxButton>
@@ -87,9 +87,6 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
        <RegistrationSection/>
-       <GridItem>
-       Icons made by <a href="https://www.flaticon.com/authors/fjstudio" title="fjstudio">fjstudio</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-       </GridItem>
       </div>
       <Footer />
     </div>
