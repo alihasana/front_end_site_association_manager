@@ -23,7 +23,7 @@
         },
         {
             "id": 4,
-            "question": "Ensvisagez-vous des adhérents ?",
+            "question": "Envisagez-vous des adhérents ?",
             "choix": ["Non", "Oui"],
             "imageUrl": ["https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fno%20final.jpg?alt=media&token=ff10ebd3-2d8b-4bea-a597-4a3fd193af03","https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fyes%20final.jpg?alt=media&token=92d94d4d-5d6a-4406-b464-39203b964df0"]
         },
@@ -31,7 +31,7 @@
             "id": 5,
             "question": "Quel est votre nom et prénom ?",
             "choix": [],
-            "info": "Le nom et le prénom de première  l'utilisateur , en 250 caractères maximum (caractères de l’alphabet latin uniquement, espaces, signes compris). Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
+            "info": "Le nom et le prénom du premier utilisateur , en 250 caractères maximum (caractères de l’alphabet latin uniquement, espaces, signes compris). Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
             "imageUrl": [],
             "type": "text"
 
@@ -40,19 +40,18 @@
             "id": 6,
             "question": "Quel est votre email ?",
             "choix": [],
-            "info": "Le email première  l'utilisateur et le association. Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
+            "info": "L'email du premier utilisateur et  de l'association. Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
             "imageUrl": [],
             "type": "email"
 
         },
         {
             "id": 7,
-            "question": "Quel est votre l'age ?",
+            "question": "Quel est votre âge ?",
             "choix": [],
-            "info": "L'age de première  l'utilisateuren 2 caractères maximum (caractères de numeric uniquement).",
+            "info": "L'âge du premier  utilisateur en 2 caractères maximum (caractères de numeric uniquement).",
             "imageUrl": [],
             "type": "number"
-
         },
         {
             "id":8,
