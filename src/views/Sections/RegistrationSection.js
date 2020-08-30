@@ -1,38 +1,15 @@
 import React from "react";
-import {ParallaxButton} from 'react-parallax-button';
-// import { makeUseAxios } from 'axios-hooks';
-// import axios from 'axios';
 import classNames from "classnames";
-// @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-//import FormControlLabel from "@material-ui/core/FormControlLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
-//import Radio from "@material-ui/core/Radio";
-
-// @material-ui/icons
-//import { Storefront, FolderShared, SupervisorAccount, CompareArrows, StayCurrentPortrait } from "@material-ui/icons";
-//import Chat from "@material-ui/icons/Chat";
-//import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
-
-
-// core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-//import InfoArea from "components/InfoArea/InfoArea.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import NavPills from "components/NavPills/NavPills.js";
-import Button from "components/CustomButtons/Button.js";
-
 import dataJson from 'service/data/dataJsonDidacticiel.json';
-
 import styles from "assets/jss/material-kit-react/views/landingPageSections/registerStyle.js";
 import DidactModal from "components/DidactModal/DidactModal";
+import Joi from "@hapi/joi";
 
-
- 
-/* const useAxios = makeUseAxios({
-  axios: axios.create({dataJson})
-}) */
 const useStyles = makeStyles(styles);
 
 export default function RegistrationSection() {
@@ -43,13 +20,99 @@ export default function RegistrationSection() {
       classes.imgRounded,
       classes.crop
   )
-  const [selectedEnabled, setSelectedEnabled] = React.useState();
-  
-  const dataFormQ = 
+  const [selectedEnabled, setSelectedEnabled] = React.useState('');
+  const [inputError, setError] = React.useState('');
+    const handleDataInput = async data => {
+        let inputId = data.target.id
+        let inputValue = data.target.value
+        let question = getQuestion(inputId)
+        if(inputId === '2') {
+            let {error, value} = await Joi.string().min(5).max(50).required().validate(inputValue);
+            if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
+                await setError("Le nom de association est obligatoire. Le texte doit contenir moins de 50 caractères et plus de 5 caractères")
+                handleInput(Number(inputId), question, '');
+            } else {
+                await setError("");
+                handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
+            }
+        }
+        if(inputId === '7') {
+            let {error, value} = await Joi.number().integer().min(13).max(99).required().validate(inputValue);
+            if (error){
+                console.log('error')
+                await setError("L'age est obligatoire. L'age doit contenir plus de 12 ans et mois de 100 ans")
+                handleInput(Number(inputId), question, '');
+            } else {
+                await setError("");
+                handleInput(Number(inputId), question, value);
+            }
+        }
+
+        if(inputId === '6') {
+            let {error, value} = await Joi.string().email({ tlds: { allow: false } }).required().validate(inputValue);
+            if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
+                await setError("Le email est obligatoire")
+                handleInput(Number(inputId), question, '');
+            } else {
+                await setError("");
+                handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
+            }
+        }
+        if(inputId === '5') {
+            let {error, value} = await Joi.string().min(2).max(50).required().validate(inputValue);
+            if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
+                await setError("Le nom est obligatoire. Le texte doit contenir moins de 50 caractères et plus de 2 caractères")
+                handleInput(Number(inputId), question, '')
+            } else {
+                await setError("");
+                handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
+            }
+        }
+    };
+    const getQuestion= (id) => {
+        for (const data of dataJson.data) {
+            if (data.id === Number(id)) {
+                return data.question
+            }
+        }
+    }
+
+  const handleInput =  (id, question, response) => {
+      console.log(id, question, response)
+      const dataToAdd = {id, question, response}
+      let data = localStorage.getItem('registration');
+      if (data) {
+          let items = JSON.parse(data);
+          let verifyDuplicate = checkData(dataToAdd.id, items)
+          console.log(verifyDuplicate);
+          if (verifyDuplicate) {
+              let index = items.findIndex(x => x.id === dataToAdd.id);
+              items[index].response = dataToAdd.response
+              localStorage.setItem('registration', JSON.stringify(items))
+              console.log(checkData(dataToAdd.id, items));
+          } else {
+              items.push(dataToAdd);
+              localStorage.setItem('registration', JSON.stringify(items))
+          }
+      } else {
+          localStorage.setItem('registration', JSON.stringify([dataToAdd]))
+      }
+    }
+    const checkData = (dataID, items) => {
+      let response = false;
+        for (const item of items) {
+            if (item.id === dataID) {
+                response = true
+            }
+        }
+        return response
+    }
+
+  const dataFormQ =
    <NavPills
-      tabs= {dataJson.data.map(data => { 
+      tabs= {dataJson.data.map(data => {
         // If the field choix is an empty array so an input type text is activited
-        if (data.choix.length===0) 
+        if (data.choix.length===0)
         return {
           tabButton: data.id.toString(),
           tabContent: (
@@ -61,32 +124,15 @@ export default function RegistrationSection() {
               <DidactModal active={NavPills.active} info={data.info} />
                 <GridItem xs={12} key={data.id} data-answer-id={data.id} data-answer-weight="300">
                 <CustomInput
-                labelText="Remplir"
-                id="AssosType"
+                labelText={data.question}
+                id= {data.id.toString()}
                 formControlProps={{
                   fullWidth: true
                 }}
+                error={!(inputError === "")}
                 inputProps={{
-                  endAdornment: (
-                    <InputAdornment className={classes.inputAdornment} position="end">
-                      <Button className={classes.button} simple size="sm" >
-                      <ParallaxButton className={"fab fa-list-alt"}
-                        text="Confirmer"
-                        parallaxScale={0.7}
-                        backgroundStyle={{  
-                          background: 'linear-gradient(right, #0038F0, #0DBD5C)',
-                          borderRadius: '8px',  
-                          boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
-                        }}  
-                        textStyle={{  
-                          padding: '1.5em 2.5em 1.5em 2.5em',  
-                          color: 'white'  
-                        }}
-                        // onClick={dynamicform} 
-                      />
-                      </Button>
-                    </InputAdornment>
-                  )
+                    type: data.type,
+                    onChange: handleDataInput
                 }}
               />
               </GridItem>
@@ -103,13 +149,16 @@ export default function RegistrationSection() {
               </div>
               <GridContainer className={classes.container}>
               {data.choix.map((element,index) => {
-                let smValue = 6  
+                let smValue = 6
                 if (data.choix.length>=3){
                     smValue = 4
                 }
                 return <GridItem xs={12} sm={smValue} key={index} className={classes.margin} data-answer-id={index} data-answer-weight="300">
                   <div className={classseImage} onClick={() => setSelectedEnabled(data.id.toString()+""+index)}>
-                    <img className={selectedEnabled===(data.id.toString()+""+index)?classes.imgActive:classes.image} src={data.imageUrl[index]} alt={data.choix[index]}/>
+                    <img className={selectedEnabled===(data.id.toString()+""+index)?classes.imgActive:classes.image}
+                         onClick={() => handleInput(data.id, data.question, data.choix[index])}
+                         src={data.imageUrl[index]}
+                         alt={data.choix[index]}/>
                   </div>
               <span className="answer-text">{element}</span>
                 </GridItem>
@@ -122,16 +171,7 @@ export default function RegistrationSection() {
       })
       }
     />
-
-/* //    const [{ data, loading, error }, refetch] = useAxios();
-    const [{ data, loading, error }] = useAxios();
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error!</p>; */
-
   return (
-    {/* <button onClick={refetch}>refetch</button> */},
-    {/* <pre>{JSON.stringify(data, null, 2)}</pre> */},
     <GridContainer className={classes.container}>
       <GridItem>
         {dataFormQ}

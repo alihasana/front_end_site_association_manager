@@ -10,7 +10,8 @@
             "question": "Quel est le nom de votre association ?",
             "choix": [],
             "info": "Le nom de votre association doit être renseigné tel qu’il figure dans les statuts, en 250 caractères maximum (caractères de l’alphabet latin uniquement, espaces, signes compris). Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
-            "imageUrl": []
+            "imageUrl": [],
+            "type": "text"
 
         },
         {
@@ -28,13 +29,34 @@
         },
         {
             "id": 5,
-            "question": "Ensvisagez-vous des adhérents ?",
-            "choix": ["Non", "Oui"],
-            "imageUrl": ["https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fno%20final.jpg?alt=media&token=ff10ebd3-2d8b-4bea-a597-4a3fd193af03","https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fyes%20final.jpg?alt=media&token=92d94d4d-5d6a-4406-b464-39203b964df0"]
+            "question": "Quel est votre nom et prénom ?",
+            "choix": [],
+            "info": "Le nom et le prénom de première  l'utilisateur , en 250 caractères maximum (caractères de l’alphabet latin uniquement, espaces, signes compris). Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
+            "imageUrl": [],
+            "type": "text"
+
         },
         {
-            "id":6,
-            "question":"Avez-vous réalisé une assemblé constitutive?",
+            "id": 6,
+            "question": "Quel est votre email ?",
+            "choix": [],
+            "info": "Le email première  l'utilisateur et le association. Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
+            "imageUrl": [],
+            "type": "email"
+
+        },
+        {
+            "id": 7,
+            "question": "Quel est votre l'age ?",
+            "choix": [],
+            "info": "L'age de première  l'utilisateuren 2 caractères maximum (caractères de numeric uniquement).",
+            "imageUrl": [],
+            "type": "number"
+
+        },
+        {
+            "id":8,
+            "question":"En utilisant ce formulaire, vous acceptez le stockage et la gestion de vos données par ce site",
             "choix":["Non","Oui"],
             "info":"Veuillez-vous référer au kit gratuit par le biais du bouton juste au dessus de se formulaire",
             "imageUrl": ["https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fno%20final.jpg?alt=media&token=ff10ebd3-2d8b-4bea-a597-4a3fd193af03","https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fyes%20final.jpg?alt=media&token=92d94d4d-5d6a-4406-b464-39203b964df0"]
