@@ -13,63 +13,71 @@ import Joi from "@hapi/joi";
 const useStyles = makeStyles(styles);
 
 export default function RegistrationSection() {
-  const classes = useStyles();
+    const classes = useStyles();
 
-  const classseImage = classNames(
-      classes.imgRaised,
-      classes.imgRounded,
-      classes.crop
-  )
-  const [selectedEnabled, setSelectedEnabled] = React.useState('');
-  const [inputError, setError] = React.useState('');
+    const classseImage = classNames(
+        classes.imgRaised,
+        classes.imgRounded,
+        classes.crop
+    )
+    const [selectedEnabled, setSelectedEnabled] = React.useState('');
+    const [inputError, setError] = React.useState('');
+    const [inputErrorId, setErrorId] = React.useState('');
     const handleDataInput = async data => {
         let inputId = data.target.id
         let inputValue = data.target.value
         let question = getQuestion(inputId)
-        if(inputId === '2') {
+        if (inputId === '2') {
             let {error, value} = await Joi.string().min(5).max(50).required().validate(inputValue);
             if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
                 await setError("Le nom de association est obligatoire. Le texte doit contenir moins de 50 caractères et plus de 5 caractères")
                 handleInput(Number(inputId), question, '');
             } else {
                 await setError("");
+                await setErrorId(inputId)
                 handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
             }
         }
-        if(inputId === '7') {
+        if (inputId === '7') {
             let {error, value} = await Joi.number().integer().min(13).max(99).required().validate(inputValue);
-            if (error){
+            if (error) {
                 console.log('error')
                 await setError("L'age est obligatoire. L'age doit contenir plus de 12 ans et mois de 100 ans")
+                await setErrorId(inputId)
                 handleInput(Number(inputId), question, '');
             } else {
                 await setError("");
+                await setErrorId("");
                 handleInput(Number(inputId), question, value);
             }
         }
 
-        if(inputId === '6') {
-            let {error, value} = await Joi.string().email({ tlds: { allow: false } }).required().validate(inputValue);
+        if (inputId === '6') {
+            let {error, value} = await Joi.string().email({tlds: {allow: false}}).required().validate(inputValue);
             if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
-                await setError("Le email est obligatoire")
+                await setError("Le email est obligatoire");
+                await setErrorId(inputId)
                 handleInput(Number(inputId), question, '');
             } else {
                 await setError("");
+                await setErrorId("")
                 handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
             }
         }
-        if(inputId === '5') {
+        if (inputId === '5') {
             let {error, value} = await Joi.string().min(2).max(50).required().validate(inputValue);
             if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
                 await setError("Le nom est obligatoire. Le texte doit contenir moins de 50 caractères et plus de 2 caractères")
+                await setErrorId(inputId);
                 handleInput(Number(inputId), question, '')
             } else {
                 await setError("");
+                await setErrorId("");
                 handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
             }
         }
     };
-    const getQuestion= (id) => {
+    const getQuestion = (id) => {
         for (const data of dataJson.data) {
             if (data.id === Number(id)) {
                 return data.question
@@ -77,30 +85,69 @@ export default function RegistrationSection() {
         }
     }
 
-  const handleInput =  (id, question, response, cssStyleId = null) => {
-      console.log(id, question, response)
-      const dataToAdd = {id, question, response, cssStyleId}
-      let data = localStorage.getItem('registration');
-      if (data) {
-          let items = JSON.parse(data);
-          let verifyDuplicate = checkData(dataToAdd.id, items)
-          console.log(verifyDuplicate);
-          if (verifyDuplicate) {
-              let index = items.findIndex(x => x.id === dataToAdd.id);
-              items[index].response = dataToAdd.response
-              items[index].cssStyleId = dataToAdd.cssStyleId
-              localStorage.setItem('registration', JSON.stringify(items))
-              console.log(checkData(dataToAdd.id, items));
-          } else {
-              items.push(dataToAdd);
-              localStorage.setItem('registration', JSON.stringify(items))
-          }
-      } else {
-          localStorage.setItem('registration', JSON.stringify([dataToAdd]))
-      }
+    const handleInput = async (id, question, response, cssStyleId = null) => {
+        console.log(id, question, response)
+        const dataToAdd = {id, question, response, cssStyleId}
+        let data = localStorage.getItem('registration');
+        if (data) {
+            let items = JSON.parse(data);
+            let verifyDuplicate = checkData(dataToAdd.id, items)
+            console.log(verifyDuplicate);
+            if (verifyDuplicate) {
+                let index = items.findIndex(x => x.id === dataToAdd.id);
+                items[index].response = dataToAdd.response
+                items[index].cssStyleId = dataToAdd.cssStyleId
+                localStorage.setItem('registration', JSON.stringify(items))
+                console.log(checkData(dataToAdd.id, items));
+            } else {
+                items.push(dataToAdd);
+                localStorage.setItem('registration', JSON.stringify(items))
+            }
+        } else {
+            localStorage.setItem('registration', JSON.stringify([dataToAdd]))
+        }
+        if (id === 1) {
+            if (response === '') {
+                await setError("Le type d'association est obligatoire.")
+            } else {
+                await setError("");
+                await setErrorId(id)
+            }
+        }
+        if (id === 3) {
+            if (response === '') {
+                console.log('error')
+                await setError("Input est obligatorie")
+                await setErrorId(id)
+
+            } else {
+                await setError("");
+                await setErrorId("");
+            }
+        }
+
+        if (id === 4) {
+
+            if (response === '') {
+                await setError("Input est obligatorie");
+                await setErrorId(id)
+            } else {
+                await setError("");
+                await setErrorId("")
+            }
+        }
+        if (id === 8) {
+            if (response === '' || response === 'Non') {
+                await setError("Veuillez vous accepter condition, si vous souhaite continuer")
+                await setErrorId(id);
+            } else {
+                await setError("");
+                await setErrorId("");
+            }
+        }
     }
     const checkData = (dataID, items) => {
-      let response = false;
+        let response = false;
         for (const item of items) {
             if (item.id === dataID) {
                 response = true
@@ -126,6 +173,16 @@ export default function RegistrationSection() {
         return response
     }
 
+    const inputIsMust = (message) => {
+        console.log('message')
+        console.log(message)
+        return(<div style={{color: '#db2269', fontSize: '15px', display: 'relative'}}>
+            {message}
+            <br/>
+            <br/>
+        </div>)
+    }
+
 
   const dataFormQ =
    <NavPills
@@ -148,12 +205,15 @@ export default function RegistrationSection() {
                 formControlProps={{
                   fullWidth: true
                 }}
-                error={!(inputError === "")}
+                error={!(inputError === "") || (NavPills.error === "")}
                 inputProps={{
                     type: data.type,
                     onChange: handleDataInput
                 }}
               />
+                    {
+                        (!(inputError === "")) ? inputIsMust(inputError) : ""
+                    }
               </GridItem>
           </GridContainer>
           )
@@ -188,6 +248,10 @@ export default function RegistrationSection() {
                 </GridItem>
                 }
             )}
+                  {
+                      (!(inputError === "")) ? inputIsMust(inputError) : ""
+                  }
+
             </GridContainer>
           </GridContainer>
           )

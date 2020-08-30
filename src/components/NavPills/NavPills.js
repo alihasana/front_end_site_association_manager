@@ -23,25 +23,50 @@ const useStyles = makeStyles(styles);
 export default function NavPills(props) {
   const [active, setActive] = useState(props.active);
   const [selected, setSelected] = useState(0);
+  const [inputError, setError] = useState(props.error);
   const handleChange = (event, active) => {
     setActive(active);
     setSelected(active);
-    
+
   };
-  const handleChangeIndex = index => {    
+  const handleChangeIndex = index => {
     setActive(index);
     setSelected(index);
   };
 
   const HandleNextTab = (event) =>{
     var newActive = active+1
-    if (active<tabs.length-1) setActive(newActive);
+      console.log('active');
+      console.log(active);
+      let data = localStorage.getItem('registration');
+      if (data) {
+          let items = JSON.parse(data);
+          if (checkData(active+1, items)) {
+              if (active<tabs.length-1) setActive(newActive);
+              setError('');
+          } else setError('Input est obligatorie')
+      } else setError('Input est obligatorie')
   };
+    const checkData = (dataID, items) => {
+        let response = false;
+        for (const item of items) {
+            if (item.id === dataID) {
+                console.log(dataID)
+                console.log(item.id)
+                response = true
+            }
+        }
+        return response
+    }
 
   const handlePrevTab = (event) =>{
     var newActive = active-1
-    if (active > 0) setActive(newActive);
+      if (active > 0) setActive(newActive);
   };
+
+  const handleSubmit = () => {
+
+  }
 
   const classes = useStyles();
   const { tabs, direction, color, horizontal, alignCenter } = props;
@@ -86,7 +111,7 @@ export default function NavPills(props) {
           />
         );
       })}
-      
+
     </Tabs>
   );
   const tabContent = (
@@ -103,44 +128,52 @@ export default function NavPills(props) {
             </div>
           );
         })}
-        
+
       </SwipeableViews>
       <GridContainer className={horizontal} >
         <GridItem xs={12} className={classes.buttonPrevious}>
           <Button className={classes.button} simple size="sm">
-          <ParallaxButton 
+          <ParallaxButton
             text="Précédent"
             parallaxScale={0.7}
-            backgroundStyle={{  
-              background: 'linear-gradient(right, #0038F0, #0DBD5C)',  
-              borderRadius: '8px',  
-              boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
-            }}  
-            textStyle={{  
-              padding: '1.5em 2.5em 1.5em 2.5em',  
-              color: 'white'  
+            backgroundStyle={{
+              background: 'linear-gradient(right, #0038F0, #0DBD5C)',
+              borderRadius: '8px',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'
+            }}
+            textStyle={{
+              padding: '1.5em 2.5em 1.5em 2.5em',
+              color: 'white'
             }}
             onClick={handlePrevTab}
           />
           </Button>
         </GridItem>
         <GridItem xs={12} className={classes.buttonNext}  >
-          <Button className={classes.button} simple size="sm">
+            { ((active+1 === tabs.length) ?
+            (<Button
+                color="primary"
+                size="lg"
+                onClick={handleSubmit}>
+                Enregistrer
+            </Button>):
+
+         ( <Button className={classes.button} simple size="sm">
           <ParallaxButton
-            text="Suivant"
+            text= { (active+1 === tabs.length) ? "Enregistrer": "Suivant" }
             parallaxScale={0.7}
-            backgroundStyle={{  
-              background: 'linear-gradient(right, #0038F0, #0DBD5C)',  
-              borderRadius: '8px',  
-              boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'  
-            }}  
-            textStyle={{  
-              padding: '1.5em 2.5em 1.5em 2.5em',  
-              color: 'white'  
+            backgroundStyle={{
+              background: 'linear-gradient(right, #0038F0, #0DBD5C)',
+              borderRadius: '8px',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, .3)'
+            }}
+            textStyle={{
+              padding: '1.5em 2.5em 1.5em 2.5em',
+              color: 'white'
             }}
             onClick={HandleNextTab}
           />
-          </Button>
+          </Button>))}
         </GridItem>
       </GridContainer>
     </div>
