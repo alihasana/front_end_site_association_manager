@@ -52,11 +52,13 @@ const registerStyle = {
     height: "194px"
   },
   image:{
-    width: "140%",
+    width: "100%",
+    height:"100%",
     filter: "grayscale(100%)"
   },
   imgActive:{
-    width: "140%",
+    width: "100%",
+    height:"100%",
     filter: "grayscale(0%)"
   },
   ...imagesStyles
