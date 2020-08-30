@@ -64,6 +64,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "server": "set HTTPS=true && pm2 start ./node_modules/react-scripts/scripts/start.js --name 'front' --watch",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "heroku-postbuild": "npm install",
