@@ -77,9 +77,9 @@ export default function RegistrationSection() {
         }
     }
 
-  const handleInput =  (id, question, response) => {
+  const handleInput =  (id, question, response, cssStyleId = null) => {
       console.log(id, question, response)
-      const dataToAdd = {id, question, response}
+      const dataToAdd = {id, question, response, cssStyleId}
       let data = localStorage.getItem('registration');
       if (data) {
           let items = JSON.parse(data);
@@ -88,6 +88,7 @@ export default function RegistrationSection() {
           if (verifyDuplicate) {
               let index = items.findIndex(x => x.id === dataToAdd.id);
               items[index].response = dataToAdd.response
+              items[index].cssStyleId = dataToAdd.cssStyleId
               localStorage.setItem('registration', JSON.stringify(items))
               console.log(checkData(dataToAdd.id, items));
           } else {
@@ -107,6 +108,24 @@ export default function RegistrationSection() {
         }
         return response
     }
+    const cssStyle = (id) => {
+        let data = localStorage.getItem('registration');
+        if (data) {
+            let items = JSON.parse(data);
+            return checkCss(id, items)
+        }
+        return null;
+    }
+    const checkCss = (cssStyleId, items) => {
+        let response = false;
+        for (const item of items) {
+            if (item.cssStyleId === cssStyleId) {
+                response = true
+            }
+        }
+        return response
+    }
+
 
   const dataFormQ =
    <NavPills
@@ -154,9 +173,14 @@ export default function RegistrationSection() {
                     smValue = 4
                 }
                 return <GridItem xs={12} sm={smValue} key={index} className={classes.margin} data-answer-id={index} data-answer-weight="300">
-                  <div className={classseImage} onClick={() => setSelectedEnabled(data.id.toString()+""+index)}>
-                    <img className={selectedEnabled===(data.id.toString()+""+index)?classes.imgActive:classes.image}
-                         onClick={() => handleInput(data.id, data.question, data.choix[index])}
+                  <div className={classseImage}
+                       onClick={() => setSelectedEnabled(data.id.toString()+""+index)}
+                  >
+                    <img className={
+                        (cssStyle(data.id.toString()+""+index) || selectedEnabled === data.id.toString()+""+index)
+                            ? classes.imgActive
+                            : classes.image}
+                         onClick={() => handleInput(data.id, data.question, data.choix[index], data.id.toString()+""+index)}
                          src={data.imageUrl[index]}
                          alt={data.choix[index]}/>
                   </div>

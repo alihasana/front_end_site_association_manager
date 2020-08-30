@@ -48,7 +48,7 @@ export default function LoginPage(props) {
   const email = useFormIput(validity);
   const password = useFormIput(validity);
   const [showPassword, setShowPassword] = React.useState(false);
-  const [showPasswordIcon, setShowPasswordIcon] = React.useState(<Visibility />); 
+  const [showPasswordIcon, setShowPasswordIcon] = React.useState(<Visibility />);
   const [assoRegexp]= React.useState(/^([a-zA-Z]){2,15}$/)
   const [emailRegexp]= React.useState(/^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+(?:[a-zA-Z]{2}|aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel)$/)
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -61,9 +61,9 @@ export default function LoginPage(props) {
   //const [loginValidity, setloginValidity] = React.useState(false);
 
   React.useEffect(()=>{
-    setValidity(assoRegexp.test(asso.value)? false : true);
+    setValidity(!assoRegexp.test(asso.value));
     console.log("assoValidity: " + asso.validity);
-    setValidity(emailRegexp.test(email.value)? false : true);
+    setValidity(!emailRegexp.test(email.value));
     console.log("emailValidity: " + email.validity);
   }, [assoRegexp, asso.value, asso.validity, emailRegexp, email.value, email.validity])
 
@@ -96,6 +96,7 @@ const handleSubmit = async (e) => {
   try {
     await AuthAPI.authenticate(email.value, password.value);
     setIsAuthenticated(true);
+    console.log(isAuthenticated);
     history.replace(from);
   } catch (error) {
       toast.error("Vérifiez vos identifiants de connexion !");
@@ -229,7 +230,7 @@ const handleSubmit = async (e) => {
                       Get started
                     </Button>
                     <Link to="/Landing-page">
-                      <Button className={classes.button} color="linkColor" simple size="lg"> 
+                      <Button className={classes.button} color="linkColor" simple size="lg">
                       Inscrire mon association
                       </Button>
                     </Link>
