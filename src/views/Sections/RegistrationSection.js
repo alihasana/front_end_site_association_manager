@@ -65,6 +65,19 @@ export default function RegistrationSection() {
             }
         }
         if (inputId === '5') {
+            let {error, value} = Joi.string().required().min(8).max(15).label('Password')
+                .pattern( new RegExp('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]){8,15}$')).validate(inputValue);
+            if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
+                await setError("Le Mpt de passe est  doit contenir moins de 15 caractères et plus de 8 caractères")
+                await setErrorId(inputId);
+                handleInput(Number(inputId), question, '')
+            } else {
+                await setError("");
+                await setErrorId("");
+                handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
+            }
+        }
+        if (inputId === '8') {
             let {error, value} = await Joi.string().min(2).max(50).required().validate(inputValue);
             if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
                 await setError("Le nom est obligatoire. Le texte doit contenir moins de 50 caractères et plus de 2 caractères")
@@ -136,7 +149,8 @@ export default function RegistrationSection() {
                 await setErrorId("")
             }
         }
-        if (id === 8) {
+        if (id === 9) {
+            console.log(response);
             if (response === '' || response === 'Non') {
                 await setError("Veuillez vous accepter condition, si vous souhaite continuer")
                 await setErrorId(id);
@@ -212,7 +226,7 @@ export default function RegistrationSection() {
                 }}
               />
                     {
-                        (!(inputError === "")) ? inputIsMust(inputError) : ""
+                        (!(inputError === "") && (inputErrorId === data.id)) ? inputIsMust(inputError) : ""
                     }
               </GridItem>
           </GridContainer>
@@ -249,7 +263,7 @@ export default function RegistrationSection() {
                 }
             )}
                   {
-                      (!(inputError === "")) ? inputIsMust(inputError) : ""
+                      (!(inputError === "")&& (inputErrorId === data.id)) ? inputIsMust(inputError) : ""
                   }
 
             </GridContainer>

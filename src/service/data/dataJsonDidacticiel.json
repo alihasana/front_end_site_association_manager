@@ -47,6 +47,14 @@
         },
         {
             "id": 7,
+            "question": "Mot de passe",
+            "choix": [],
+            "info": "mote de passe doit être en 8 character minimum.",
+            "imageUrl": [],
+            "type": "password"
+        },
+        {
+            "id": 8,
             "question": "Quel est votre âge ?",
             "choix": [],
             "info": "L'âge du premier  utilisateur en 2 caractères maximum (caractères de numeric uniquement).",
@@ -54,7 +62,7 @@
             "type": "number"
         },
         {
-            "id":8,
+            "id":9,
             "question":"En utilisant ce formulaire, vous acceptez le stockage et la gestion de vos données par ce site",
             "choix":["Non","Oui"],
             "info":"Veuillez-vous référer au kit gratuit par le biais du bouton juste au dessus de se formulaire",
