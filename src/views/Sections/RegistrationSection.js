@@ -26,16 +26,18 @@ export default function RegistrationSection() {
     const handleDataInput = async data => {
         let inputId = data.target.id
         let inputValue = data.target.value
+        console.log(inputValue);
         let question = getQuestion(inputId)
+        let input = getInput(inputId)
         if (inputId === '1') {
             let {error, value} = await Joi.string().min(5).max(50).required().validate(inputValue);
             if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
                 await setError("Le nom de association est obligatoire. Le texte doit contenir moins de 50 caractères et plus de 5 caractères")
-                handleInput(Number(inputId), question, '');
+                await handleInput(Number(inputId), question, '', input);
             } else {
                 await setError("");
                 await setErrorId(inputId)
-                handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
+                await handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim(), input);
             }
         }
         if (inputId === '2') {
@@ -43,11 +45,11 @@ export default function RegistrationSection() {
             if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
                 await setError("Le nom est obligatoire. Le texte doit contenir moins de 50 caractères et plus de 2 caractères")
                 await setErrorId(inputId);
-                handleInput(Number(inputId), question, '')
+                await handleInput(Number(inputId), question, '', input)
             } else {
                 await setError("");
                 await setErrorId("");
-                handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
+                await handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim(), input);
             }
         }
         if (inputId === '3') {
@@ -55,11 +57,11 @@ export default function RegistrationSection() {
             if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
                 await setError("Le prénom est obligatoire. Le texte doit contenir moins de 50 caractères et plus de 2 caractères")
                 await setErrorId(inputId);
-                handleInput(Number(inputId), question, '')
+                await handleInput(Number(inputId), question, '', input)
             } else {
                 await setError("");
                 await setErrorId("");
-                handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
+                await handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim(), input);
             }
         }
         if (inputId === '4') {
@@ -68,11 +70,11 @@ export default function RegistrationSection() {
                 console.log('error')
                 await setError("L'age est obligatoire. L'age doit contenir plus de 12 ans et mois de 100 ans")
                 await setErrorId(inputId)
-                handleInput(Number(inputId), question, '');
+                await handleInput(Number(inputId), question, '', input);
             } else {
                 await setError("");
                 await setErrorId("");
-                handleInput(Number(inputId), question, value);
+                await handleInput(Number(inputId), question, value, input);
             }
         }
         if (inputId === '5') {
@@ -80,24 +82,23 @@ export default function RegistrationSection() {
             if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
                 await setError("Le email est obligatoire");
                 await setErrorId(inputId)
-                handleInput(Number(inputId), question, '');
+                await handleInput(Number(inputId), question, '', input);
             } else {
                 await setError("");
                 await setErrorId("")
-                handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
+                await handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim(), input);
             }
         }
         if (inputId === '6') {
-            let {error, value} = Joi.string().required().min(8).max(15).label('Password')
-                .pattern( new RegExp('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]){8,15}$')).validate(inputValue);
+            let {error, value} = Joi.string().required().min(8).max(15).label('Password').validate(inputValue);
             if (error || value.replace(/<[^>]+>|\s/g, '') === '') {
                 await setError("Le Mot de passe est  doit contenir moins de 15 caractères et plus de 8 caractères")
                 await setErrorId(inputId);
-                handleInput(Number(inputId), question, '')
+                await handleInput(Number(inputId), question, '', input)
             } else {
                 await setError("");
                 await setErrorId("");
-                handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim());
+                await handleInput(Number(inputId), question, (value.replace(/<[^>]+>/g, '')).trim(), input);
             }
         }
     };
@@ -108,10 +109,17 @@ export default function RegistrationSection() {
             }
         }
     }
+    const getInput = (id) => {
+        for (const data of dataJson.data) {
+            if (data.id === Number(id)) {
+                return data.input
+            }
+        }
+    }
 
-    const handleInput = async (id, question, response, cssStyleId = null) => {
+    const handleInput = async (id, question, response, input, cssStyleId = null) => {
         console.log(id, question, response)
-        const dataToAdd = {id, question, response, cssStyleId}
+        const dataToAdd = {id, question, response, cssStyleId, input}
         let data = localStorage.getItem('registration');
         if (data) {
             let items = JSON.parse(data);
@@ -237,7 +245,7 @@ export default function RegistrationSection() {
                 }}
               />
                     {
-                        (!(inputError === "") && (inputErrorId === data.id)) ? inputIsMust(inputError) : ""
+                        (!(inputError === "")) ? inputIsMust(inputError) : ""
                     }
               </GridItem>
           </GridContainer>
@@ -265,7 +273,7 @@ export default function RegistrationSection() {
                         (cssStyle(data.id.toString()+""+index) || selectedEnabled === data.id.toString()+""+index)
                             ? classes.imgActive
                             : classes.image}
-                         onClick={() => handleInput(data.id, data.question, data.choix[index], data.id.toString()+""+index)}
+                         onClick={() => handleInput(data.id, data.question, data.choix[index], data.input, data.id.toString()+""+index)}
                          src={data.imageUrl[index]}
                          alt={data.choix[index]}/>
                   </div>
@@ -274,7 +282,7 @@ export default function RegistrationSection() {
                 }
             )}
                   {
-                      (!(inputError === "")&& (inputErrorId === data.id)) ? inputIsMust(inputError) : ""
+                      (!(inputError === "")) ? inputIsMust(inputError) : ""
                   }
 
             </GridContainer>

@@ -2,6 +2,7 @@
     "data": [
         {
             "id": 1,
+            "input": "association_name",
             "question": "Quel est le nom de votre association ?",
             "choix": [],
             "info": "Le nom de votre association doit être renseigné tel qu’il figure dans les statuts, en 250 caractères maximum (caractères de l’alphabet latin uniquement, espaces, signes compris). Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
@@ -11,6 +12,7 @@
         },
         {
             "id": 2,
+            "input": "first_name",
             "question": "Quel est votre nom ?",
             "choix": [],
             "info": "Le nom et le prénom du premier utilisateur , en 250 caractères maximum (caractères de l’alphabet latin uniquement, espaces, signes compris). Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
@@ -20,6 +22,7 @@
         },
         {
             "id": 3,
+            "input": "last_name",
             "question": "Quel est votre prénom ?",
             "choix": [],
             "info": "Le nom et le prénom du premier utilisateur , en 250 caractères maximum (caractères de l’alphabet latin uniquement, espaces, signes compris). Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
@@ -29,6 +32,7 @@
         },
         {
             "id": 4,
+            "input": "age",
             "question": "Quel est votre âge ?",
             "choix": [],
             "info": "L'âge du premier  utilisateur en 2 caractères maximum (caractères de numeric uniquement).",
@@ -37,6 +41,7 @@
         },
         {
             "id": 5,
+            "input": "email",
             "question": "Quel est votre email ?",
             "choix": [],
             "info": "L'email du premier utilisateur et  de l'association. Il doit être suivi du sigle s’il en existe un. L’utilisation d’un sigle seul n’est pas conseillée.",
@@ -46,6 +51,7 @@
         },
         {
             "id": 6,
+            "input": "password",
             "question": "Mot de passe",
             "choix": [],
             "info": "mote de passe doit être en 8 character minimum.",
@@ -54,12 +60,14 @@
         },
         {
             "id": 7,
+            "input": "association_type",
             "question": "Quel type d'association voulez-vous créer ?",
             "choix": ["Association sportive", "Association caritative", "Autre"],
             "imageUrl": ["https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fsports.jpg?alt=media&token=d4a85ddb-14e1-45dd-81d4-4ae64161bfeb", "https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fcreative.jpg?alt=media&token=9b960b7f-b09f-4a2c-94f2-b21703748fb0", "https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fothers.jpg?alt=media&token=3a3b257a-1499-46a6-827c-554769018a27"]
         },
         {
             "id": 8,
+            "input": "is_local",
             "question": "Avez-vous besoin d'un local ?",
             "choix": ["Non", "Oui"],
             "info":"Dans l’hypothèse où le siège social de votre association est fixé chez un particulier, il est conseillé de signaler matériellement l’existence de celui-ci sur le lieu de distribution du courrier et d’en informer les services postaux afin d’éviter les cas de retour à l’envoyeur pour adresse inconnue. Lorsque l’association n’est pas propriétaire des locaux, il est prudent de fixer l’adresse du siège social en accord avec le propriétaire des lieux.",
@@ -67,12 +75,14 @@
         },
         {
             "id": 9,
+            "input": "is_member",
             "question": "Envisagez-vous des adhérents ?",
             "choix": ["Non", "Oui"],
             "imageUrl": ["https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fno%20final.jpg?alt=media&token=ff10ebd3-2d8b-4bea-a597-4a3fd193af03","https://firebasestorage.googleapis.com/v0/b/project1-8b52b.appspot.com/o/images%2Fyes%20final.jpg?alt=media&token=92d94d4d-5d6a-4406-b464-39203b964df0"]
         },
         {
             "id": 10,
+            "input": "accept_condition",
             "question":"En utilisant ce formulaire, vous acceptez le stockage et la gestion de vos données par ce site",
             "choix":["Non","Oui"],
             "info":"Veuillez-vous référer au kit gratuit par le biais du bouton juste au dessus de se formulaire",
