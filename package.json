@@ -18,7 +18,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^8.1.0",
     "acorn": "^7.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "axios-hook": "0.0.6",
     "axios-hooks": "^1.9.0",
     "bootstrap": "^4.3.1",
